@@ -1,2 +1,34 @@
 @charset "UTF-8";
-//function
+/* functions */
+
+.fn {
+    @at-root {
+        #{&}-lt {
+            float: left;
+        }
+        #{&}-rt {
+            float: right;
+        }
+        #{&}-tac {
+            text-align: center;
+        }
+        #{&}-tar {
+            text-align: right;
+        }
+        #{&}-tal {
+            text-align: left;
+        }
+        #{&}-db {
+            display: block;
+        }
+        #{&}-dn {
+            display: none;
+        }
+        #{&}-psr {
+            position: relative;
+        }
+        #{&}-psa {
+            position: absolute;
+        }
+    }
+}

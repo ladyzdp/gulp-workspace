@@ -232,7 +232,63 @@ a:active {
   color: #999;
 }
 
-/* 精灵图样式 start */
+/* 文本溢出隐藏 */
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+/* 清除浮动 */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* functions */
+.fn-lt {
+  float: left;
+}
+
+.fn-rt {
+  float: right;
+}
+
+.fn-tac {
+  text-align: center;
+}
+
+.fn-tar {
+  text-align: right;
+}
+
+.fn-tal {
+  text-align: left;
+}
+
+.fn-db {
+  display: block;
+}
+
+.fn-dn {
+  display: none;
+}
+
+.fn-psr {
+  position: relative;
+}
+
+.fn-psa {
+  position: absolute;
+}
+
+/* 精灵图样式 */
 .icons-pub, .icons-address-book-2, .icons-adress-book, .icons-alarm, .icons-anchor, .icons-bag, .icons-broom, .icons-calc, .icons-comic-book, .icons-compass, .icons-disk, .icons-display, .icons-display2, .icons-download, .icons-envelope, .icons-finder, .icons-folder-open, .icons-folder, .icons-gift, .icons-hdd, .icons-headphone, .icons-home, .icons-lens, .icons-library, .icons-license, .icons-link, .icons-magnet, .icons-mail, .icons-map, .icons-medal, .icons-memory, .icons-mug, .icons-music-cd, .icons-newspaper, .icons-photos, .icons-processor, .icons-radio, .icons-shop, .icons-smartphone, .icons-sofa, .icons-target, .icons-under-construction, .icons-usb, .icons-wallet, .icons-wallpapers {
   background-image: url('../images/icons-s681685baaa.png');
   background-repeat: no-repeat;
@@ -421,26 +477,28 @@ a:active {
   background-position: 0 -1376px;
 }
 
-/* 精灵图样式 end */
-/* 按钮 start*/
-/* 按钮 end*/
-/* 下拉菜单 start*/
-/* 下拉菜单 end*/
-/* 分页导航 start*/
-/* 分页导航 end*/
-/* 容器 start*/
-/* 容器 end*/
-/* header start*/
-/* header end*/
-/* nav start*/
-/* nav end*/
-/* 表格 start */
-/* 表格 end */
-/* sidebar start*/
-/* sidebar end*/
-/* footer start*/
-/* footer end*/
-/* 首页 start*/
-/* 首页 end*/
-/* 关于我们 start */
-/* 关于我们 end */
+/* 按钮*/
+.ui-btn {
+  display: inline-block;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 0 12px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* 下拉菜单*/
+/* 分页导航*/
+/* 容器*/
+/* header*/
+/* nav*/
+/* 表格 */
+/* sidebar*/
+/* footer*/
+/* 首页*/
+/* 产品 */
+/* 关于我们 */

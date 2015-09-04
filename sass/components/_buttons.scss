@@ -1,4 +1,19 @@
 @charset "UTF-8";
-/* 按钮 start*/
-/* 按钮 end*/
 
+/* 按钮*/
+
+.ui {
+    @at-root {
+        //在这里编写
+    	#{&}-btn{
+    		display: inline-block;
+    		@include box-sizing(content-box);
+    		padding: 0 12px;
+    		height: 28px;
+    		line-height: 28px;
+    		border-radius:3px;
+    		font-size: 12px;
+    		text-align: center;
+    	}
+    }
+}

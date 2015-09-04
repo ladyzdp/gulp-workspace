@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* 精灵图样式 start */
+/* 精灵图样式 */
 $icons-sprite-base-class: ".icons-pub";//设置的基础类
 //$<map>-spacing: 0px;//设置所有精灵间距
 //$<map>-spacing: 0px;//设置单个精灵间距
@@ -24,7 +24,3 @@ $icons:sprite-map("icons/*.png");
 }
 @include all-icons-sprites;
 
-
-
-
-/* 精灵图样式 end */

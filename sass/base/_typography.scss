@@ -6,3 +6,11 @@ a{
 	text-decoration:none;
 	@include link-color(#333,#666,#999);
 }
+/* 文本溢出隐藏 */
+.text-overflow{
+	@include ellipsis();
+}
+/* 清除浮动 */
+.clearfix{
+	@include pie-clearfix();
+}
