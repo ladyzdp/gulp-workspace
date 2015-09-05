@@ -5,15 +5,46 @@
 .ui {
     @at-root {
         //在这里编写
-    	#{&}-btn{
-    		display: inline-block;
-    		@include box-sizing(content-box);
-    		padding: 0 12px;
-    		height: 28px;
-    		line-height: 28px;
-    		border-radius:3px;
-    		font-size: 12px;
-    		text-align: center;
-    	}
+        #{&}-btn {
+            display: inline-block;
+            padding: 0 12px;
+            line-height: 28px;
+            border-radius: 3px;
+            background-color: #e6e6e6;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+}
+
+
+/* 按钮颜色 */
+
+.btn {
+    @at-root {
+        %btn-hover{
+
+        }
+        
+        #{&}-blue {
+            color: #fff;
+            background-color: #0078e7;
+        }
+        #{&}-blue {
+            background-color: #0078e7;
+        }
+        #{&}-blue {
+            background-color: #0078e7;
+        }
+        #{&}-blue {
+            background-color: #0078e7;
+        }
+        #{&}-blue {
+            background-color: #0078e7;
+        }
+        #{&}-blue {
+            background-color: #0078e7;
+        }
     }
 }

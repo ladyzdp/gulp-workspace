@@ -480,15 +480,39 @@ a:active {
 /* 按钮*/
 .ui-btn {
   display: inline-block;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
   padding: 0 12px;
-  height: 28px;
   line-height: 28px;
   border-radius: 3px;
+  background-color: #e6e6e6;
   font-size: 12px;
   text-align: center;
+  cursor: pointer;
+}
+
+/* 按钮颜色 */
+.btn-blue {
+  color: #fff;
+  background-color: #0078e7;
+}
+
+.btn-blue {
+  background-color: #0078e7;
+}
+
+.btn-blue {
+  background-color: #0078e7;
+}
+
+.btn-blue {
+  background-color: #0078e7;
+}
+
+.btn-blue {
+  background-color: #0078e7;
+}
+
+.btn-blue {
+  background-color: #0078e7;
 }
 
 /* 下拉菜单*/
