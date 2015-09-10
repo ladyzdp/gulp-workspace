@@ -1,2 +1,39 @@
 @charset "UTF-8";
 
+/* 网格系统 */
+
+// @for $i from 1 through 3 {
+// 	.item-#{$i} {
+// 		width:2em * $i;
+// 	}
+// } 
+//定义变量
+$grid-prefix:span !default;
+$grid-width:60px !default;
+$grid-gutter:20px !default;
+//定义placeholder代码片段
+%grid {
+    float: left;
+    margin-left: $grid-gutter / 2;
+    margin-right: $grid-gutter / 2;
+    background-color: #f60;
+}
+
+//使用@for循环输出12个网格
+@for $i from 1 through 12 {
+    .#{$grid-prefix}#{$i} {
+        width: $grid-width * $i + $grid-gutter * ($i - 1);
+        @extend %grid;
+    }
+}
+
+//使用while循环输出12个网格
+// $i:12;
+// @while 0 < $i {
+//     $grid-prefix: item;
+//     .#{$grid-prefix}#{$i} {
+//         width: $grid-width * $i + $grid-gutter * ($i - 1);
+//         @extend %grid;
+//     }
+//     $i:$i - 1;
+// }

@@ -19,10 +19,10 @@
             text-align: left;
         }
         #{&}-db {
-            display: block;
+            display: black;
         }
         #{&}-dn {
-            display: none;
+            display:inline-block;
         }
         #{&}-psr {
             position: relative;
