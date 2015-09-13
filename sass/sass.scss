@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* sass中的函数 */
+.test{
+	//unquote删除字符串中的引号
+	content: unquote("我是一个句子。");
+	content: unquote(我是一个句子1111。)
+	border: 1px solid red;
+}
