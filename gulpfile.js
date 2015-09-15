@@ -1,16 +1,15 @@
-
 var gulp = require('gulp'), //基础库
     plumber = require('gulp-plumber'), //错误跳出
     compass = require('gulp-compass'), //编译sass
     tinypng = require('gulp-tinypng'), //图片压缩tinypng
     imagemin = require('gulp-imagemin'), //图片压缩
     pngquant = require('imagemin-pngquant'); //深度压缩
-    // cache = require('gulp-cache'); // 文件清理
+// cache = require('gulp-cache'); // 文件清理
 
 // compass
 gulp.task('compass', function() {
 
-    gulp.src('./sass/*/*.scss')
+    gulp.src('./sass/**/*.*')
         .pipe(plumber({
             errorHandler: function(error) {
                 console.log(error.message);
@@ -60,8 +59,8 @@ gulp.task('imagemin', function() {
 // });
 // 监听
 gulp.task('watch', function() {
-    gulp.watch('./sass/*/*.scss', ['compass']); // 监听所有.scss档
-    gulp.watch('./config.b', ['compass']); //监听confirg.rg
+    gulp.watch('./sass/**/*.*', ['compass']); // 监听所有.scss文件
+    gulp.watch('./config.rb', ['compass']); //监听confirg.rb
     gulp.watch('./images/*', ['imagemin']); //监听图片改动
     //gulp.watch('./images/*', ['pngquant']); //监听图片改动
     //gulp.watch('./images/*', ['tinypng']); //监听图片改动
@@ -83,4 +82,3 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['compass', 'watch', 'imagemin']);
-
