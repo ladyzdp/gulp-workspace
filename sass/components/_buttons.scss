@@ -23,28 +23,9 @@
 
 .btn {
     @at-root {
-        %btn-hover{
-
+        #{&}-blue {
+            @include btn-bg-color(#0078e7);
         }
         
-        #{&}-blue {
-            color: #fff;
-            background-color: #0078e7;
-        }
-        #{&}-blue {
-            background-color: #0078e7;
-        }
-        #{&}-blue {
-            background-color: #0078e7;
-        }
-        #{&}-blue {
-            background-color: #0078e7;
-        }
-        #{&}-blue {
-            background-color: #0078e7;
-        }
-        #{&}-blue {
-            background-color: #0078e7;
-        }
     }
 }

@@ -289,8 +289,8 @@ a:active {
 }
 
 /* 精灵图样式 */
-.icons-pub, .icons-address-book-2, .icons-adress-book, .icons-alarm, .icons-anchor, .icons-bag, .icons-broom, .icons-calc, .icons-comic-book, .icons-compass, .icons-disk, .icons-display, .icons-display2, .icons-download, .icons-envelope, .icons-finder, .icons-folder-open, .icons-folder, .icons-gift, .icons-hdd, .icons-headphone, .icons-home, .icons-lens, .icons-library, .icons-license, .icons-link, .icons-magnet, .icons-mail, .icons-map, .icons-medal, .icons-memory, .icons-mug, .icons-music-cd, .icons-newspaper, .icons-photos, .icons-processor, .icons-radio, .icons-shop, .icons-smartphone, .icons-sofa, .icons-target, .icons-under-construction, .icons-usb, .icons-wallet, .icons-wallpapers {
-  background-image: url('../images/icons-s681685baaa.png');
+.icons-pub, .icons-adress-book, .icons-alarm, .icons-anchor, .icons-bag, .icons-broom, .icons-calc, .icons-comic-book, .icons-compass, .icons-disk, .icons-display, .icons-display2, .icons-download, .icons-envelope, .icons-finder, .icons-folder-open, .icons-folder, .icons-gift, .icons-hdd, .icons-headphone, .icons-home, .icons-lens, .icons-library, .icons-license, .icons-link, .icons-magnet, .icons-mail, .icons-map, .icons-medal, .icons-memory, .icons-mug, .icons-music-cd, .icons-newspaper, .icons-photos, .icons-processor, .icons-radio, .icons-shop, .icons-smartphone, .icons-sofa, .icons-target, .icons-under-construction, .icons-wallet {
+  background-image: url('../images/icons-sbb2893cd8f.png');
   background-repeat: no-repeat;
 }
 
@@ -301,180 +301,168 @@ a:active {
   vertical-align: middle;
 }
 
-.icons-address-book-2 {
+.icons-adress-book {
   background-position: 0 0;
 }
 
-.icons-adress-book {
+.icons-alarm {
   background-position: 0 -32px;
 }
 
-.icons-alarm {
+.icons-anchor {
   background-position: 0 -64px;
 }
 
-.icons-anchor {
+.icons-bag {
   background-position: 0 -96px;
 }
 
-.icons-bag {
+.icons-broom {
   background-position: 0 -128px;
 }
 
-.icons-broom {
+.icons-calc {
   background-position: 0 -160px;
 }
 
-.icons-calc {
+.icons-comic-book {
   background-position: 0 -192px;
 }
 
-.icons-comic-book {
+.icons-compass {
   background-position: 0 -224px;
 }
 
-.icons-compass {
+.icons-disk {
   background-position: 0 -256px;
 }
 
-.icons-disk {
+.icons-display {
   background-position: 0 -288px;
 }
 
-.icons-display {
+.icons-display2 {
   background-position: 0 -320px;
 }
 
-.icons-display2 {
+.icons-download {
   background-position: 0 -352px;
 }
 
-.icons-download {
+.icons-envelope {
   background-position: 0 -384px;
 }
 
-.icons-envelope {
+.icons-finder {
   background-position: 0 -416px;
 }
 
-.icons-finder {
+.icons-folder-open {
   background-position: 0 -448px;
 }
 
-.icons-folder-open {
+.icons-folder {
   background-position: 0 -480px;
 }
 
-.icons-folder {
+.icons-gift {
   background-position: 0 -512px;
 }
 
-.icons-gift {
+.icons-hdd {
   background-position: 0 -544px;
 }
 
-.icons-hdd {
+.icons-headphone {
   background-position: 0 -576px;
 }
 
-.icons-headphone {
+.icons-home {
   background-position: 0 -608px;
 }
 
-.icons-home {
+.icons-lens {
   background-position: 0 -640px;
 }
 
-.icons-lens {
+.icons-library {
   background-position: 0 -672px;
 }
 
-.icons-library {
+.icons-license {
   background-position: 0 -704px;
 }
 
-.icons-license {
+.icons-link {
   background-position: 0 -736px;
 }
 
-.icons-link {
+.icons-magnet {
   background-position: 0 -768px;
 }
 
-.icons-magnet {
+.icons-mail {
   background-position: 0 -800px;
 }
 
-.icons-mail {
+.icons-map {
   background-position: 0 -832px;
 }
 
-.icons-map {
+.icons-medal {
   background-position: 0 -864px;
 }
 
-.icons-medal {
+.icons-memory {
   background-position: 0 -896px;
 }
 
-.icons-memory {
+.icons-mug {
   background-position: 0 -928px;
 }
 
-.icons-mug {
+.icons-music-cd {
   background-position: 0 -960px;
 }
 
-.icons-music-cd {
+.icons-newspaper {
   background-position: 0 -992px;
 }
 
-.icons-newspaper {
+.icons-photos {
   background-position: 0 -1024px;
 }
 
-.icons-photos {
+.icons-processor {
   background-position: 0 -1056px;
 }
 
-.icons-processor {
+.icons-radio {
   background-position: 0 -1088px;
 }
 
-.icons-radio {
+.icons-shop {
   background-position: 0 -1120px;
 }
 
-.icons-shop {
+.icons-smartphone {
   background-position: 0 -1152px;
 }
 
-.icons-smartphone {
+.icons-sofa {
   background-position: 0 -1184px;
 }
 
-.icons-sofa {
+.icons-target {
   background-position: 0 -1216px;
 }
 
-.icons-target {
+.icons-under-construction {
   background-position: 0 -1248px;
 }
 
-.icons-under-construction {
-  background-position: 0 -1280px;
-}
-
-.icons-usb {
-  background-position: 0 -1312px;
-}
-
 .icons-wallet {
-  background-position: 0 -1344px;
-}
-
-.icons-wallpapers {
-  background-position: 0 -1376px;
+  background-position: 0 -1280px;
 }
 
 /* 按钮*/
@@ -495,31 +483,15 @@ a:active {
   background-color: #0078e7;
 }
 
-.btn-blue {
-  background-color: #0078e7;
-}
-
-.btn-blue {
-  background-color: #0078e7;
-}
-
-.btn-blue {
-  background-color: #0078e7;
-}
-
-.btn-blue {
-  background-color: #0078e7;
-}
-
-.btn-blue {
-  background-color: #0078e7;
-}
-
 /* 下拉菜单*/
 /* 分页导航*/
 /* 容器*/
 /* header*/
 /* nav*/
+.test-gulp {
+  background-color: #FFF;
+}
+
 /* 表格 */
 /* sidebar*/
 /* footer*/
