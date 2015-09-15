@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 //mixins
 //创建一个可伸展的盒子
@@ -57,3 +58,53 @@
 // }
 
 // @include images-auto();
+=======
+@charset "UTF-8";
+//mixins
+//创建一个可伸展的盒子
+@mixin stretch($position:absolute, $offset-top:0, $offset-right:0, $offset-bottom:0, $offset-left:0) {
+    position: $position;
+    top: $offset-top;
+    right: $offset-right;
+    bottom: $offset-bottom;
+    left: $offset-left;
+}
+
+//链接修饰
+@mixin link-color($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+    color: $normal;
+    @if $visited {
+        &:visited {
+            color: $visited;
+        }
+    }
+    @if $focus {
+        &:focus {
+            color: $focus;
+        }
+    }
+    @if $hover {
+        &:hover {
+            color: $hover;
+        }
+    }
+    @if $active {
+        &:active {
+            color: $active;
+        }
+    }
+}
+
+//
+@mixin btn-bg-color( $default-bg:false, $hover-bg:false, $ft-color:#fff) {
+    color: $ft-color;
+    @if $default-bg {
+        background-color: $default-bg;
+    }
+    @if  $hover-bg {
+        &:hover {
+            background-color: $hover-bg;
+        }
+    }
+}
+>>>>>>> 54ffb7a6142904377285ab31a75a65c2f641e2a1
