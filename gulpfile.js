@@ -3,9 +3,31 @@ var gulp = require('gulp'), //基础库
     compass = require('gulp-compass'), //编译sass
     tinypng = require('gulp-tinypng'), //图片压缩tinypng
     imagemin = require('gulp-imagemin'), //图片压缩
+    // gulpif = require('gulp-if'),
+    // sprity = require('sprity'),
+    spritesmith = require('gulp.spritesmith'),
     pngquant = require('imagemin-pngquant'); //深度压缩
 // cache = require('gulp-cache'); // 文件清理
+//sprity
+// gulp.task('sprites', function() {
+//     return sprity.src({
+//             src: './src/images/**/*.{png}',
+//             style: './sprite.css',
+//             // ... other optional options 
+//             // for example if you want to generate scss instead of css 
+//             processor: 'sass', // make sure you have installed sprity-sass 
+//         })
+//         .pipe(gulpif('*.png', gulp.dest('./dist/img/'), gulp.dest('./dist/css/')))
+// });
+gulp.task('sprite', function() {
+    var spriteData = gulp.src('images/icons/*.png').pipe(spritesmith({
+        imgName: 'sprite.png',
+        cssName: 'sprite.css'
+        // padding: '2'
 
+    }));
+    return spriteData.pipe(gulp.dest('path/to/output/'));
+});
 // compass
 gulp.task('compass', function() {
 
@@ -81,4 +103,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['compass', 'watch', 'imagemin']);
+gulp.task('default', ['compass', 'watch', 'imagemin', 'sprite']);

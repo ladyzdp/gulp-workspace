@@ -4,16 +4,20 @@
   "description": "sass-base",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "sprity": "^1.0.7"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-cache": "^0.3.0",
     "gulp-compass": "^2.1.0",
+    "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.3.0",
     "gulp-plumber": "^1.0.1",
     "gulp-tinypng": "^1.0.2",
-    "imagemin-pngquant": "^4.2.0"
+    "gulp.spritesmith": "^4.1.0",
+    "imagemin-pngquant": "^4.2.0",
+    "sprity": "^1.0.7"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
