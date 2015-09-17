@@ -22,8 +22,9 @@ var gulp = require('gulp'), //基础库
 gulp.task('sprite', function() {
     var spriteData = gulp.src('images/icons/*.png').pipe(spritesmith({
         imgName: 'sprite.png',
-        cssName: 'sprite.css'
-        // padding: '2'
+        cssName: 'sprite.css',
+        padding: 10
+
 
     }));
     return spriteData.pipe(gulp.dest('path/to/output/'));
