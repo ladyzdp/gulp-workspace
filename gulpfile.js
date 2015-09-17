@@ -1,4 +1,8 @@
 var gulp = require('gulp'), //基础库
+    rev = require('gulp-rev'),
+    minifyHtml = require('gulp-minify-html'),
+    uglify = require('gulp-uglify'),
+    minifyCss = require('gulp-minify-css'),
     usemin = require('gulp-usemin'), //usemin
     plumber = require('gulp-plumber'), //错误跳出
     compass = require('gulp-compass'), //编译sass
@@ -26,12 +30,10 @@ var gulp = require('gulp'), //基础库
 
 //usemin
 gulp.task('usemin', function() {
-    return gulp.src('./*.html')
+    return gulp.src('./css/*.css')
         .pipe(usemin({
             css: [rev()],
-            html: [minifyHtml({
-                empty: true
-            })],
+            // html: [ minifyHtml({spare:true,empty:true}) ],
             js: [uglify(), rev()],
             inlinejs: [uglify()],
             inlinecss: [minifyCss(), 'concat']
@@ -67,6 +69,7 @@ gulp.task('compass', function() {
             css: 'css',
             sass: 'sass',
             images: 'images'
+
         }))
         .pipe(gulp.dest('css'));
 });
