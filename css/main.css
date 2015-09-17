@@ -289,16 +289,9 @@ a:active {
 }
 
 /* 精灵图样式 */
-.icons-pub, .icons-alarm, .icons-anchor, .icons-bag, .icons-broom, .icons-calc, .icons-comic-book, .icons-compass, .icons-disk, .icons-display, .icons-display2, .icons-download, .icons-envelope, .icons-finder, .icons-folder-open, .icons-folder, .icons-gift, .icons-hdd, .icons-headphone, .icons-home, .icons-lens, .icons-library, .icons-license, .icons-link, .icons-magnet, .icons-mail, .icons-map, .icons-medal, .icons-memory, .icons-mug, .icons-music-cd, .icons-newspaper, .icons-photos, .icons-processor, .icons-radio, .icons-shop, .icons-smartphone, .icons-sofa, .icons-target, .icons-under-construction, .icons-wallet {
-  background-image: url('../images/icons-s53d19697fc.png');
+.icons-sprite, .icons-alarm, .icons-anchor, .icons-bag, .icons-broom, .icons-calc, .icons-comic-book, .icons-compass, .icons-disk, .icons-display, .icons-display2, .icons-download, .icons-envelope, .icons-finder, .icons-folder-open, .icons-folder, .icons-gift, .icons-hdd, .icons-headphone, .icons-home, .icons-lens, .icons-library, .icons-license, .icons-link, .icons-magnet, .icons-mail, .icons-map, .icons-medal, .icons-memory, .icons-mug, .icons-music-cd, .icons-newspaper, .icons-photos, .icons-processor, .icons-radio, .icons-shop, .icons-smartphone, .icons-sofa, .icons-target, .icons-under-construction, .icons-wallet {
+  background-image: url('../images/icons-sda2a856224.png');
   background-repeat: no-repeat;
-}
-
-.icons-base {
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .icons-alarm {
@@ -306,159 +299,166 @@ a:active {
 }
 
 .icons-anchor {
-  background-position: 0 -32px;
+  background-position: 0 -82px;
 }
 
 .icons-bag {
-  background-position: 0 -64px;
+  background-position: 0 -164px;
 }
 
 .icons-broom {
-  background-position: 0 -96px;
+  background-position: 0 -246px;
 }
 
 .icons-calc {
-  background-position: 0 -128px;
+  background-position: 0 -328px;
 }
 
 .icons-comic-book {
-  background-position: 0 -160px;
+  background-position: 0 -410px;
 }
 
 .icons-compass {
-  background-position: 0 -192px;
+  background-position: 0 -492px;
 }
 
 .icons-disk {
-  background-position: 0 -224px;
+  background-position: 0 -574px;
 }
 
 .icons-display {
-  background-position: 0 -256px;
+  background-position: 0 -656px;
 }
 
 .icons-display2 {
-  background-position: 0 -288px;
+  background-position: 0 -738px;
 }
 
 .icons-download {
-  background-position: 0 -320px;
+  background-position: 0 -820px;
 }
 
 .icons-envelope {
-  background-position: 0 -352px;
+  background-position: 0 -902px;
 }
 
 .icons-finder {
-  background-position: 0 -384px;
+  background-position: 0 -984px;
 }
 
 .icons-folder-open {
-  background-position: 0 -416px;
+  background-position: 0 -1066px;
 }
 
 .icons-folder {
-  background-position: 0 -448px;
+  background-position: 0 -1148px;
 }
 
 .icons-gift {
-  background-position: 0 -480px;
+  background-position: 0 -1230px;
 }
 
 .icons-hdd {
-  background-position: 0 -512px;
+  background-position: 0 -1312px;
 }
 
 .icons-headphone {
-  background-position: 0 -544px;
+  background-position: 0 -1394px;
 }
 
 .icons-home {
-  background-position: 0 -576px;
+  background-position: 0 -1476px;
 }
 
 .icons-lens {
-  background-position: 0 -608px;
+  background-position: 0 -1558px;
 }
 
 .icons-library {
-  background-position: 0 -640px;
+  background-position: 0 -1640px;
 }
 
 .icons-license {
-  background-position: 0 -672px;
+  background-position: 0 -1722px;
 }
 
 .icons-link {
-  background-position: 0 -704px;
+  background-position: 0 -1804px;
 }
 
 .icons-magnet {
-  background-position: 0 -736px;
+  background-position: 0 -1886px;
 }
 
 .icons-mail {
-  background-position: 0 -768px;
+  background-position: 0 -1968px;
 }
 
 .icons-map {
-  background-position: 0 -800px;
+  background-position: 0 -2050px;
 }
 
 .icons-medal {
-  background-position: 0 -832px;
+  background-position: 0 -2132px;
 }
 
 .icons-memory {
-  background-position: 0 -864px;
+  background-position: 0 -2214px;
 }
 
 .icons-mug {
-  background-position: 0 -896px;
+  background-position: 0 -2296px;
 }
 
 .icons-music-cd {
-  background-position: 0 -928px;
+  background-position: 0 -2378px;
 }
 
 .icons-newspaper {
-  background-position: 0 -960px;
+  background-position: 0 -2460px;
 }
 
 .icons-photos {
-  background-position: 0 -992px;
+  background-position: 0 -2542px;
 }
 
 .icons-processor {
-  background-position: 0 -1024px;
+  background-position: 0 -2624px;
 }
 
 .icons-radio {
-  background-position: 0 -1056px;
+  background-position: 0 -2706px;
 }
 
 .icons-shop {
-  background-position: 0 -1088px;
+  background-position: 0 -2788px;
 }
 
 .icons-smartphone {
-  background-position: 0 -1120px;
+  background-position: 0 -2870px;
 }
 
 .icons-sofa {
-  background-position: 0 -1152px;
+  background-position: 0 -2952px;
 }
 
 .icons-target {
-  background-position: 0 -1184px;
+  background-position: 0 -3034px;
 }
 
 .icons-under-construction {
-  background-position: 0 -1216px;
+  background-position: 0 -3116px;
 }
 
 .icons-wallet {
-  background-position: 0 -1248px;
+  background-position: 0 -3198px;
+}
+
+.icons-base {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* 按钮*/

@@ -15,6 +15,7 @@
     "gulp-imagemin": "^2.3.0",
     "gulp-plumber": "^1.0.1",
     "gulp-tinypng": "^1.0.2",
+    "gulp-usemin": "^0.3.14",
     "gulp.spritesmith": "^4.1.0",
     "imagemin-pngquant": "^4.2.0",
     "sprity": "^1.0.7"

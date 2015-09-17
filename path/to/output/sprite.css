@@ -11,121 +11,121 @@ Icon classes can be used entirely standalone. They are named after their origina
 */
 .icon-alarm {
   background-image: url(sprite.png);
-  background-position: -42px 0px;
+  background-position: -32px 0px;
   width: 32px;
   height: 32px;
 }
 .icon-anchor {
   background-image: url(sprite.png);
-  background-position: 0px -168px;
+  background-position: 0px -128px;
   width: 32px;
   height: 32px;
 }
 .icon-bag {
   background-image: url(sprite.png);
-  background-position: 0px -42px;
+  background-position: 0px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-broom {
   background-image: url(sprite.png);
-  background-position: -42px -42px;
+  background-position: -32px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-calc {
   background-image: url(sprite.png);
-  background-position: -84px 0px;
+  background-position: -64px 0px;
   width: 32px;
   height: 32px;
 }
 .icon-comic-book {
   background-image: url(sprite.png);
-  background-position: -84px -42px;
+  background-position: -64px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-compass {
   background-image: url(sprite.png);
-  background-position: 0px -84px;
+  background-position: 0px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-disk {
   background-image: url(sprite.png);
-  background-position: -42px -84px;
+  background-position: -32px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-display {
   background-image: url(sprite.png);
-  background-position: -84px -84px;
+  background-position: -64px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-display2 {
   background-image: url(sprite.png);
-  background-position: -126px 0px;
+  background-position: -96px 0px;
   width: 32px;
   height: 32px;
 }
 .icon-download {
   background-image: url(sprite.png);
-  background-position: -126px -42px;
+  background-position: -96px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-envelope {
   background-image: url(sprite.png);
-  background-position: -126px -84px;
+  background-position: -96px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-finder {
   background-image: url(sprite.png);
-  background-position: 0px -126px;
+  background-position: 0px -96px;
   width: 32px;
   height: 32px;
 }
 .icon-folder-open {
   background-image: url(sprite.png);
-  background-position: -42px -126px;
+  background-position: -32px -96px;
   width: 32px;
   height: 32px;
 }
 .icon-folder {
   background-image: url(sprite.png);
-  background-position: -84px -126px;
+  background-position: -64px -96px;
   width: 32px;
   height: 32px;
 }
 .icon-gift {
   background-image: url(sprite.png);
-  background-position: -126px -126px;
+  background-position: -96px -96px;
   width: 32px;
   height: 32px;
 }
 .icon-hdd {
   background-image: url(sprite.png);
-  background-position: -168px 0px;
+  background-position: -128px 0px;
   width: 32px;
   height: 32px;
 }
 .icon-headphone {
   background-image: url(sprite.png);
-  background-position: -168px -42px;
+  background-position: -128px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-home {
   background-image: url(sprite.png);
-  background-position: -168px -84px;
+  background-position: -128px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-lens {
   background-image: url(sprite.png);
-  background-position: -168px -126px;
+  background-position: -128px -96px;
   width: 32px;
   height: 32px;
 }
@@ -137,115 +137,115 @@ Icon classes can be used entirely standalone. They are named after their origina
 }
 .icon-license {
   background-image: url(sprite.png);
-  background-position: -42px -168px;
+  background-position: -32px -128px;
   width: 32px;
   height: 32px;
 }
 .icon-link {
   background-image: url(sprite.png);
-  background-position: -84px -168px;
+  background-position: -64px -128px;
   width: 32px;
   height: 32px;
 }
 .icon-magnet {
   background-image: url(sprite.png);
-  background-position: -126px -168px;
+  background-position: -96px -128px;
   width: 32px;
   height: 32px;
 }
 .icon-mail {
   background-image: url(sprite.png);
-  background-position: -168px -168px;
+  background-position: -128px -128px;
   width: 32px;
   height: 32px;
 }
 .icon-map {
   background-image: url(sprite.png);
-  background-position: -210px 0px;
+  background-position: -160px 0px;
   width: 32px;
   height: 32px;
 }
 .icon-medal {
   background-image: url(sprite.png);
-  background-position: -210px -42px;
+  background-position: -160px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-memory {
   background-image: url(sprite.png);
-  background-position: -210px -84px;
+  background-position: -160px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-mug {
   background-image: url(sprite.png);
-  background-position: -210px -126px;
+  background-position: -160px -96px;
   width: 32px;
   height: 32px;
 }
 .icon-music-cd {
   background-image: url(sprite.png);
-  background-position: -210px -168px;
+  background-position: -160px -128px;
   width: 32px;
   height: 32px;
 }
 .icon-newspaper {
   background-image: url(sprite.png);
-  background-position: 0px -210px;
+  background-position: 0px -160px;
   width: 32px;
   height: 32px;
 }
 .icon-photos {
   background-image: url(sprite.png);
-  background-position: -42px -210px;
+  background-position: -32px -160px;
   width: 32px;
   height: 32px;
 }
 .icon-processor {
   background-image: url(sprite.png);
-  background-position: -84px -210px;
+  background-position: -64px -160px;
   width: 32px;
   height: 32px;
 }
 .icon-radio {
   background-image: url(sprite.png);
-  background-position: -126px -210px;
+  background-position: -96px -160px;
   width: 32px;
   height: 32px;
 }
 .icon-shop {
   background-image: url(sprite.png);
-  background-position: -168px -210px;
+  background-position: -128px -160px;
   width: 32px;
   height: 32px;
 }
 .icon-smartphone {
   background-image: url(sprite.png);
-  background-position: -210px -210px;
+  background-position: -160px -160px;
   width: 32px;
   height: 32px;
 }
 .icon-sofa {
   background-image: url(sprite.png);
-  background-position: -252px 0px;
+  background-position: -192px 0px;
   width: 32px;
   height: 32px;
 }
 .icon-target {
   background-image: url(sprite.png);
-  background-position: -252px -42px;
+  background-position: -192px -32px;
   width: 32px;
   height: 32px;
 }
 .icon-under-construction {
   background-image: url(sprite.png);
-  background-position: -252px -84px;
+  background-position: -192px -64px;
   width: 32px;
   height: 32px;
 }
 .icon-wallet {
   background-image: url(sprite.png);
-  background-position: -252px -126px;
+  background-position: -192px -96px;
   width: 32px;
   height: 32px;
 }
