@@ -12,8 +12,8 @@ var gulp = require('gulp'), //基础库
     pngquant = require('imagemin-pngquant'); //深度压缩
 //gulpif = require('gulp-if'),
 //sprity = require('sprity');
-//spritesmith = require('gulp.spritesmith'); //合并精灵图
-//cache = require('gulp-cache'); // 文件清理
+//spritesmith = require('gulp.spritesmith');       //合并精灵图
+//cache = require('gulp-cache');                   // 文件清理
 
 
 //sprity合并精灵图
@@ -30,16 +30,21 @@ var gulp = require('gulp'), //基础库
 
 //usemin
 gulp.task('usemin', function() {
-    return gulp.src('./css/*.css')
+     gulp.src('./*.html')
         .pipe(usemin({
-            css: [rev()],
+            // css: [rev()],
             // html: [ minifyHtml({spare:true,empty:true}) ],
             js: [uglify(), rev()],
             inlinejs: [uglify()],
             inlinecss: [minifyCss(), 'concat']
         }))
         .pipe(gulp.dest('build/'));
+    //给css文件加上MD5版本号
+      gulp.src('./css/*.css')
+        .pipe(rev())
+        .pipe(gulp.dest('dist'));
 });
+
 //gulp.spritesmith合并精灵图
 /*gulp.task('sprite', function() {
     var spriteData = gulp.src('images/icons/*.png').pipe(spritesmith({

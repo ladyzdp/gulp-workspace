@@ -1,16 +1,24 @@
 @charset "UTF-8";
-ul,li{
-	list-style:none;
+ul,
+li {
+    list-style: none;
 }
-a{
-	text-decoration:none;
-	@include link-color(#333,#666,#999);
+
+a {
+    text-decoration: none;
+    @include link-color(#333, #666, #999);
 }
+
+
 /* 文本溢出隐藏 */
-.text-overflow{
-	@include ellipsis();
+
+.text-overflow {
+    @include ellipsis();
 }
+
+
 /* 清除浮动 */
-.clearfix{
-	@include pie-clearfix();
+
+.clearfix {
+    @include pie-clearfix();
 }

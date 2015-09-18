@@ -5,13 +5,13 @@
 
 //$icons-sprite-base-class: ".icons-pub";//设置的基础类
 //$<map>-<sprite>-spacing: 0px;//设置单个精灵间距
-$icons-spacing: 50px; //设置所有精灵间距
+$icons-spacing: 30px; //设置所有精灵间距
 //$<map>-repeat: no-repeat/repeat-x;//设置所有精灵的重复性
 //$<map>-<sprite>-repeat: no-repeat/repeat-x;//设置单个精灵的重复性
 //$<map>-position: 0px;//设置所有精灵的位置
 //$<map>-<sprite>-position: 0px;//设置单个精灵的位置
 //$<map>-layout: vertical/horizontal/diagonal/smart;//设置精灵图布局
-//$pic-layout:horizontal;
+//$pic-layout:smart;
 //$<map>-sprite-dimensions: true/false;//为精灵地图中的每个精灵自动设置尺寸
 //<map>-sprite-height($name)//设置精灵的高度
 //<map>-sprite-width($name)//设置精灵的宽度
@@ -19,6 +19,7 @@ $icons-spacing: 50px; //设置所有精灵间距
 // $icons:sprite-map("icons/*.png");
 @import "icons/*.png";
 @include all-icons-sprites;
+
 .icons-base {
     width: 32px;
     height: 32px;
