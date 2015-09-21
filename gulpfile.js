@@ -1,15 +1,18 @@
 var gulp = require('gulp'), //基础库
     clean = require('gulp-clean'),
-    rev = require('gulp-rev'),//给文件添加版本号
+    //给文件添加版本号
     //minifyHtml = require('gulp-minify-html'),
     uglify = require('gulp-uglify'),
-    minifyCss = require('gulp-minify-css'),
-    usemin = require('gulp-usemin'), //usemin
     plumber = require('gulp-plumber'), //错误跳出
     compass = require('gulp-compass'), //编译sass
+    minifyCss = require('gulp-minify-css'),
+    rev = require('gulp-rev'),
+    usemin = require('gulp-usemin'), //usemin
+
     //tinypng = require('gulp-tinypng'), //图片压缩tinypng
     imagemin = require('gulp-imagemin'), //图片压缩
     //bower = require('gulp-bower'),
+    uncss = require('gulp-uncss'),
     pngquant = require('imagemin-pngquant'); //深度压缩
 //gulpif = require('gulp-if'),
 //sprity = require('sprity');
@@ -18,46 +21,19 @@ var gulp = require('gulp'), //基础库
 
 //配置路径
 var config = {
-    cssUrl: './css/*.css', //css路径
-    scssUrl: './sass/**/*.scss', //scss路径
-    jsUrl: './js/*.js', //js路径
-    imagesUrl: './images/*', //图片路径
-    htmlUrl: './*.html' //html路径
+    cssUrl: 'css/*.css', //css路径
+    scssUrl: 'sass/**/*.scss', //scss路径
+    jsUrl: 'js/*.js', //js路径
+    imagesUrl: 'images/*', //图片路径
+    htmlUrl: '*.html' //html路径
 
 };
-
-//sprity合并精灵图
-// gulp.task('sprites', function() {
-//     return sprity.src({
-//             src: './src/images/**/*.{png,jpg}',
-//             style: './sprite.css',
-//             // ... other optional options 
-//             // for example if you want to generate scss instead of css 
-//             processor: 'sass', // make sure you have installed sprity-sass 
-//         })
-//         .pipe(gulpif('*.png', gulp.dest('./dist/img/'), gulp.dest('./dist/css/')));
-// });
-
-
-
-//gulp.spritesmith合并精灵图
-/*gulp.task('sprite', function() {
-    var spriteData = gulp.src('images/icons/*.png').pipe(spritesmith({
-        imgName: 'sprite.png',
-        cssName: 'sprite.css',
-        padding: 20,
-    }));
-
-    //spriteData.img.pipe(gulp.dest("./css")); // 雪碧图输出路径
-    //spriteData.css.pipe(gulp.dest("./css")); //css输出路径
-    return spriteData.pipe(gulp.dest('path/to/output/'));
-});*/
 
 
 // compass编译scss
 gulp.task('compass', function() {
 
-    gulp.src(config.scssUrl)
+    return gulp.src(config.scssUrl)
         .pipe(plumber({
             errorHandler: function(error) {
                 console.log(error.message);
@@ -69,16 +45,34 @@ gulp.task('compass', function() {
             css: 'css',
             sass: 'sass',
             images: 'images'
-
         }))
         .pipe(gulp.dest('css'));
+
+});
+//图片压缩
+gulp.task('imagemin', function() {
+    return gulp.src(config.imagesUrl)
+        .pipe(imagemin({
+            progressive: true, // 无损压缩JPG图片
+            svgoPlugins: [{
+                removeViewBox: false
+            }], // 不要移除svg的viewbox属性
+            use: [pngquant()] // 使用pngquant插件进行深度压缩
+        }))
+
+    .pipe(gulp.dest('assets/images')); //压缩后的图片存放路径
 });
 //压缩CSS
 gulp.task('minify-css', function() {
-  return gulp.src('css/*.css')
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest('assets/css'));
+    return gulp.src('css/*.css')
+        .pipe(minifyCss({
+            compatibility: 'ie8'
+        }))
+
+    .pipe(gulp.dest('assets/css'))
+
 });
+
 //usemin
 // gulp.task('usemin', function() {
 //     gulp.src('./css/*.css')
@@ -104,19 +98,15 @@ gulp.task('minify-css', function() {
 //     //     .pipe(gulp.dest('assets'));
 
 // });
-//图片压缩
-gulp.task('imagemin', function() {
-    gulp.src(config.imagesUrl)
-        .pipe(imagemin({
-            progressive: true, // 无损压缩JPG图片
-            svgoPlugins: [{
-                removeViewBox: false
-            }], // 不要移除svg的viewbox属性
-            use: [pngquant()] // 使用pngquant插件进行深度压缩
-        }))
 
-    .pipe(gulp.dest('assets/images')); //压缩后的图片存放路径
-});
+//uncss
+// gulp.task('uncss', function () {
+//     return gulp.src('assets/css/*.css')
+//         .pipe(uncss({
+//             html: ['*.html' ]
+//         }))
+//         .pipe(gulp.dest('html'));
+// });
 //清除过期文件
 gulp.task('clean', function() {
     return gulp.src('assets', {
@@ -124,16 +114,6 @@ gulp.task('clean', function() {
         })
         .pipe(clean());
 });
-
-//深度压缩
-/*gulp.task('pngquant', function() {
-    gulp.src('./images/*.png')
-        .pipe(pngquant({
-            quality: '65-80',
-            speed: 4
-        })())
-        .pipe(gulp.dest('build/images'));
-});*/
 
 
 //tinypng图片压缩
@@ -152,9 +132,10 @@ gulp.task('clean', function() {
 
 // 监听
 gulp.task('watch', function() {
-    gulp.watch([config.scssUrl, './config.rb'], ['compass','minify-css']); // 监听所有.scss文件监听confirg.rb
-    gulp.watch('./images/*', ['imagemin']); //监听图片改动
-    //gulp.watch(config.cssUrl, ['usemin']);
+    gulp.watch([config.scssUrl, 'config.rb'], ['compass']); // 监听所有.scss文件监听confirg.rb
+
+    gulp.watch(config.cssUrl, ['minify-css']);
+    gulp.watch('images/*', ['imagemin']); //监听图片改动
     // gulp.watch([config.cssUrl,config.jsUrl,config.htmlUrl],['clean','usemin']);
     //gulp.watch('./images/*', ['clean']); //监听图片改动
     //gulp.watch('./images/*', ['pngquant']); //监听图片改动
@@ -176,4 +157,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['compass','imagemin','minify-css','watch']);
+gulp.task('default', ['clean', 'compass', 'imagemin', 'watch']);
