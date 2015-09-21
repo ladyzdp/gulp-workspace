@@ -1,11 +1,5 @@
 @charset "UTF-8";
-ul,
-li {
-    list-style: none;
-}
-
 a {
-    text-decoration: none;
     @include link-color(#333, #666, #999);
 }
 
@@ -21,4 +15,7 @@ a {
 
 .clearfix {
     @include pie-clearfix();
+}
+.test-gulp-demo{
+	border: 1px solid red;
 }

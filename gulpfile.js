@@ -1,12 +1,13 @@
 var gulp = require('gulp'), //基础库
-    rev = require('gulp-rev'),
-    minifyHtml = require('gulp-minify-html'),
+    clean = require('gulp-clean'),
+    rev = require('gulp-rev'),//给文件添加版本号
+    //minifyHtml = require('gulp-minify-html'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
     usemin = require('gulp-usemin'), //usemin
     plumber = require('gulp-plumber'), //错误跳出
     compass = require('gulp-compass'), //编译sass
-    tinypng = require('gulp-tinypng'), //图片压缩tinypng
+    //tinypng = require('gulp-tinypng'), //图片压缩tinypng
     imagemin = require('gulp-imagemin'), //图片压缩
     //bower = require('gulp-bower'),
     pngquant = require('imagemin-pngquant'); //深度压缩
@@ -15,6 +16,15 @@ var gulp = require('gulp'), //基础库
 //spritesmith = require('gulp.spritesmith');       //合并精灵图
 //cache = require('gulp-cache');                   // 文件清理
 
+//配置路径
+var config = {
+    cssUrl: './css/*.css', //css路径
+    scssUrl: './sass/**/*.scss', //scss路径
+    jsUrl: './js/*.js', //js路径
+    imagesUrl: './images/*', //图片路径
+    htmlUrl: './*.html' //html路径
+
+};
 
 //sprity合并精灵图
 // gulp.task('sprites', function() {
@@ -28,22 +38,7 @@ var gulp = require('gulp'), //基础库
 //         .pipe(gulpif('*.png', gulp.dest('./dist/img/'), gulp.dest('./dist/css/')));
 // });
 
-//usemin
-gulp.task('usemin', function() {
-     gulp.src('./*.html')
-        .pipe(usemin({
-            // css: [rev()],
-            // html: [ minifyHtml({spare:true,empty:true}) ],
-            js: [uglify(), rev()],
-            inlinejs: [uglify()],
-            inlinecss: [minifyCss(), 'concat']
-        }))
-        .pipe(gulp.dest('build/'));
-    //给css文件加上MD5版本号
-      gulp.src('./css/*.css')
-        .pipe(rev())
-        .pipe(gulp.dest('dist'));
-});
+
 
 //gulp.spritesmith合并精灵图
 /*gulp.task('sprite', function() {
@@ -62,7 +57,7 @@ gulp.task('usemin', function() {
 // compass编译scss
 gulp.task('compass', function() {
 
-    gulp.src('./sass/**/*.*')
+    gulp.src(config.scssUrl)
         .pipe(plumber({
             errorHandler: function(error) {
                 console.log(error.message);
@@ -78,11 +73,40 @@ gulp.task('compass', function() {
         }))
         .pipe(gulp.dest('css'));
 });
+//压缩CSS
+gulp.task('minify-css', function() {
+  return gulp.src('css/*.css')
+    .pipe(minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('assets/css'));
+});
+//usemin
+// gulp.task('usemin', function() {
+//     gulp.src('./css/*.css')
+//        .pipe(usemin({
+//            css: [rev()],
+//            // html: [ minifyHtml({spare:true,empty:true}) ],
+//            js: [uglify(), rev(),gulp.dest('assets/js')],
+//            inlinejs: [uglify()],
+//            inlinecss: [minifyCss(),gulp.dest('assets/css')]
+//        }));
+//     //    .pipe(gulp.dest('build/'));
+//     // //给css文件加上MD5版本号
+//     // gulp.src(config.cssUrl)
+//     //     .pipe(rev())
+//     //     .pipe(gulp.dest('assets/css'));
+//     // //给js加版本号
+//     // gulp.src(config.jsUrl)
+//     //     .pipe(rev())
+//     //     .pipe(gulp.dest('assets/js'));
+//     // //给Html加版本号
+//     // gulp.src(config.htmlUrl)
+//     //     .pipe(rev())
+//     //     .pipe(gulp.dest('assets'));
 
-
+// });
 //图片压缩
 gulp.task('imagemin', function() {
-    gulp.src('./images/*')
+    gulp.src(config.imagesUrl)
         .pipe(imagemin({
             progressive: true, // 无损压缩JPG图片
             svgoPlugins: [{
@@ -91,9 +115,15 @@ gulp.task('imagemin', function() {
             use: [pngquant()] // 使用pngquant插件进行深度压缩
         }))
 
-    .pipe(gulp.dest('build/images')); //压缩后的图片存放路径
+    .pipe(gulp.dest('assets/images')); //压缩后的图片存放路径
 });
-
+//清除过期文件
+gulp.task('clean', function() {
+    return gulp.src('assets', {
+            read: false
+        })
+        .pipe(clean());
+});
 
 //深度压缩
 /*gulp.task('pngquant', function() {
@@ -122,9 +152,11 @@ gulp.task('imagemin', function() {
 
 // 监听
 gulp.task('watch', function() {
-    gulp.watch('./sass/**/*.*', ['compass']); // 监听所有.scss文件
-    gulp.watch('./config.rb', ['compass']); //监听confirg.rb
+    gulp.watch([config.scssUrl, './config.rb'], ['compass','minify-css']); // 监听所有.scss文件监听confirg.rb
     gulp.watch('./images/*', ['imagemin']); //监听图片改动
+    //gulp.watch(config.cssUrl, ['usemin']);
+    // gulp.watch([config.cssUrl,config.jsUrl,config.htmlUrl],['clean','usemin']);
+    //gulp.watch('./images/*', ['clean']); //监听图片改动
     //gulp.watch('./images/*', ['pngquant']); //监听图片改动
     //gulp.watch('./images/*', ['tinypng']); //监听图片改动
 
@@ -144,4 +176,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['compass', 'watch', 'imagemin', 'usemin']);
+gulp.task('default', ['compass','imagemin','minify-css','watch']);
