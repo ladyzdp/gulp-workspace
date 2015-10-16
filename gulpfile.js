@@ -14,7 +14,7 @@ var gulp = require('gulp'), //基础库
 //gulpif = require('gulp-if'),
 //sprity = require('sprity');
 //spritesmith = require('gulp.spritesmith');       //合并精灵图
-//cache = require('gulp-cache');                   // 文件清理
+//cache = require('gulp-cache');                 // 文件清理
 
 //配置路径
 var config = {
