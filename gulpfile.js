@@ -1,54 +1,78 @@
 var gulp = require('gulp'), //基础库
     clean = require('gulp-clean'),
-    //给文件添加版本号
-    //minifyHtml = require('gulp-minify-html'),
-    uglify = require('gulp-uglify'),
+    sass = require('gulp-sass'),
+    merge = require('merge-stream'),
+    //minifyHtml = require('gulp-minify-html'),//压缩html
+    //uglify = require('gulp-uglify'),
     plumber = require('gulp-plumber'), //错误跳出
-    compass = require('gulp-compass'), //编译sass
+    //compass = require('gulp-compass'), //编译sass
     minifyCss = require('gulp-minify-css'),
-    rev = require('gulp-rev'),
-    usemin = require('gulp-usemin'), //usemin
-
-    //tinypng = require('gulp-tinypng'), //图片压缩tinypng
+    //rev = require('gulp-rev'),
+    //usemin = require('gulp-usemin'), //usemin
     imagemin = require('gulp-imagemin'), //图片压缩
-    //bower = require('gulp-bower'),
-    uncss = require('gulp-uncss'),
-    pngquant = require('imagemin-pngquant'); //深度压缩
-//gulpif = require('gulp-if'),
-//sprity = require('sprity');
-//spritesmith = require('gulp.spritesmith');       //合并精灵图
-//cache = require('gulp-cache');                 // 文件清理
+    //postcss = require('gulp-postcss'), //postcss
+    pngquant = require('imagemin-pngquant'), //深度压缩
+    gulpif = require('gulp-if'),
+    //sprity = require('sprity');
+    spritesmith = require('gulp.spritesmith'); //合并精灵图
+
 
 //配置路径
 var config = {
-    cssUrl: 'css/*.css', //css路径
+    cssUrl: 'assets/css/*.css', //css路径
     scssUrl: 'sass/**/*.scss', //scss路径
     jsUrl: 'js/*.js', //js路径
-    imagesUrl: 'images/*', //图片路径
+    imagesUrl: 'assets/images/*.{png,jpg}', //图片路径
     htmlUrl: '*.html' //html路径
 
 };
-
-
-// compass编译scss
-gulp.task('compass', function() {
-
-    return gulp.src(config.scssUrl)
-        .pipe(plumber({
-            errorHandler: function(error) {
-                console.log(error.message);
-                this.emit('end');
-            }
-        }))
-        .pipe(compass({
-            config_file: './config.rb',
-            css: 'css',
-            sass: 'sass',
-            images: 'images'
-        }))
-        .pipe(gulp.dest('css'));
-
+//sass
+gulp.task('sass', function() {
+    gulp.src(config.scssUrl)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('assets/css'));
 });
+
+gulp.task('sprite', function() {
+    var spriteData = gulp.src('assets/images/*/*.{png,jpg}').pipe(spritesmith({
+        imgName: 'sprite.png',
+        cssName: 'sprite.css',
+        padding:20,//间距
+        algorithm:'top-down'//布局
+
+
+    }));
+    var imgStream = spriteData.img
+        .pipe(pngquant())
+        .pipe(gulp.dest('assets/images'));
+
+    // Pipe CSS stream through CSS optimizer and onto disk
+    var cssStream = spriteData.css
+        // .pipe(minifyCss())
+        .pipe(gulp.dest('sass/sprites'));
+
+    // Return a merged stream to handle both `end` events
+    return merge(imgStream, cssStream);
+});
+// compass编译scss
+// gulp.task('compass', function() {
+
+//     return gulp.src(config.scssUrl)
+//         .pipe(plumber({
+//             errorHandler: function(error) {
+//                 console.log(error.message);
+//                 this.emit('end');
+//             }
+//         }))
+//         .pipe(compass({
+//             config_file: './config.rb',
+//             css: 'css',
+//             sass: 'sass',
+//             images: 'images'
+//         }))
+//         .pipe(gulp.dest('css'));
+
+// });
 //图片压缩
 gulp.task('imagemin', function() {
     return gulp.src(config.imagesUrl)
@@ -64,40 +88,15 @@ gulp.task('imagemin', function() {
 });
 //压缩CSS
 gulp.task('minify-css', function() {
-    return gulp.src('css/*.css')
+    return gulp.src(config.cssUrl)
         .pipe(minifyCss({
             compatibility: 'ie8'
         }))
 
-    .pipe(gulp.dest('assets/css'))
+    .pipe(gulp.dest('assets/css'));
 
 });
 
-//usemin
-// gulp.task('usemin', function() {
-//     gulp.src('./css/*.css')
-//        .pipe(usemin({
-//            css: [rev()],
-//            // html: [ minifyHtml({spare:true,empty:true}) ],
-//            js: [uglify(), rev(),gulp.dest('assets/js')],
-//            inlinejs: [uglify()],
-//            inlinecss: [minifyCss(),gulp.dest('assets/css')]
-//        }));
-//     //    .pipe(gulp.dest('build/'));
-//     // //给css文件加上MD5版本号
-//     // gulp.src(config.cssUrl)
-//     //     .pipe(rev())
-//     //     .pipe(gulp.dest('assets/css'));
-//     // //给js加版本号
-//     // gulp.src(config.jsUrl)
-//     //     .pipe(rev())
-//     //     .pipe(gulp.dest('assets/js'));
-//     // //给Html加版本号
-//     // gulp.src(config.htmlUrl)
-//     //     .pipe(rev())
-//     //     .pipe(gulp.dest('assets'));
-
-// });
 
 //uncss
 // gulp.task('uncss', function () {
@@ -124,37 +123,17 @@ gulp.task('clean', function() {
 });*/
 
 
-//缓存清理
-/*gulp.task('clean', function(done) {
-    return cache.clearAll(done);
-});*/
-
-
 // 监听
 gulp.task('watch', function() {
-    gulp.watch([config.scssUrl, 'config.rb'], ['compass']); // 监听所有.scss文件监听confirg.rb
-
+    //gulp.watch([config.scssUrl, 'config.rb'], ['compass']); // 监听所有.scss文件监听confirg.rb
+    gulp.watch(config.scssUrl, ['sass']);
     gulp.watch(config.cssUrl, ['minify-css']);
-    gulp.watch('images/*', ['imagemin']); //监听图片改动
+    //gulp.watch('images/*', ['imagemin']); //监听图片改动
     // gulp.watch([config.cssUrl,config.jsUrl,config.htmlUrl],['clean','usemin']);
     //gulp.watch('./images/*', ['clean']); //监听图片改动
     //gulp.watch('./images/*', ['pngquant']); //监听图片改动
     //gulp.watch('./images/*', ['tinypng']); //监听图片改动
 
-    // // 监听所有.js档
-    // gulp.watch('src/scripts/**/*.js', ['scripts']);
-
-    // // 监听所有图片档
-    // gulp.watch('./src/images*', ['compass']);
-
-    // // 建立即时重整伺服器
-    // var server = livereload();
-
-    // // 监听所有位在 dist/  目录下的档案，一旦有更动，便进行重整
-    // gulp.watch(['dist/**']).on('change', function(file) {
-    //   server.changed(file.path);
-    // });
-
 });
 
-gulp.task('default', ['clean', 'compass', 'imagemin', 'watch']);
+gulp.task('default', ['clean', 'sass', 'sprite', 'watch']);

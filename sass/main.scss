@@ -1,18 +1,13 @@
 @charset "UTF-8";
-@import "compass",
-"compass/layout",
-"compass/typography",
-
-//helpers
+@import //helpers
 "helpers/variables", // 变量
 "helpers/mixins", // mixin
-
 //base
 "base/reset", // normalize.css 
 "base/typography", // 文本修饰规则
 "helpers/functions", // function
 "helpers/placeholders", // @extend
-"helpers/sprites", // 精灵图
+"sprites/sprites", // 精灵图
 "helpers/media-queries", // 媒体查询
 //compinents
 "components/buttons", // 按钮样式
