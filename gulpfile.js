@@ -136,4 +136,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['clean', 'sass', 'sprite', 'watch']);
+gulp.task('default', ['clean', 'sass', 'watch']);
