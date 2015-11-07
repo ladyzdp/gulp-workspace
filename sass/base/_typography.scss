@@ -1,8 +1,4 @@
 @charset "UTF-8";
-a {
-    @include link-color(#333, #666, #999);
-}
-
 
 /* 文本溢出隐藏 */
 
@@ -15,9 +11,4 @@ a {
 
 .clearfix {
     @include pie-clearfix();
-}
-.test-gulp-demo{
-	border: 1px solid red;
-	background-color:green;
-	font-size: 40px;
 }
