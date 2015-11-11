@@ -311,6 +311,99 @@ img {
   position: absolute;
 }
 
+[class^="icons-"],
+[class*=" icons-"] {
+  display: inline-block;
+}
+
+.icons-all-list {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 0;
+  height: 20px;
+  width: 20px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-arrow {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -25px;
+  height: 13px;
+  width: 7px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-card {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -42px;
+  height: 20px;
+  width: 20px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-checked-false {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -67px;
+  height: 16px;
+  width: 16px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-checked-true {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -88px;
+  height: 16px;
+  width: 16px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-edit {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -109px;
+  height: 16px;
+  width: 16px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-money {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -130px;
+  height: 20px;
+  width: 20px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
+.icons-shouhou {
+  background-image: url('../images/mall-icons-s57489544b2.png');
+  background-position: 0 -155px;
+  height: 20px;
+  width: 20px;
+  -moz-background-size: 20px auto;
+  -o-background-size: 20px auto;
+  -webkit-background-size: 20px auto;
+  background-size: 20px auto;
+}
+
 /* 按钮*/
 .ui-btn {
   display: inline-block;
