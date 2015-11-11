@@ -1,5 +1,6 @@
 var gulp = require('gulp'), //基础库
     clean = require('gulp-clean'),
+
     sass = require('gulp-sass'),
     merge = require('merge-stream'),
     //minifyHtml = require('gulp-minify-html'),//压缩html
@@ -40,7 +41,6 @@ gulp.task('sprite', function() {
         padding:20,//间距
         algorithm:'top-down'//布局
 
-
     }));
     var imgStream = spriteData.img
         .pipe(pngquant())
@@ -54,6 +54,7 @@ gulp.task('sprite', function() {
     // Return a merged stream to handle both `end` events
     return merge(imgStream, cssStream);
 });
+
 // compass编译scss
 // gulp.task('compass', function() {
 
@@ -73,6 +74,7 @@ gulp.task('sprite', function() {
 //         .pipe(gulp.dest('css'));
 
 // });
+
 //图片压缩
 gulp.task('imagemin', function() {
     return gulp.src(config.imagesUrl)
@@ -86,33 +88,8 @@ gulp.task('imagemin', function() {
 
     .pipe(gulp.dest('assets/images')); //压缩后的图片存放路径
 });
-//压缩CSS
-gulp.task('minify-css', function() {
-    return gulp.src(config.cssUrl)
-        .pipe(minifyCss({
-            compatibility: 'ie8'
-        }))
-
-    .pipe(gulp.dest('assets/css'));
-
-});
 
 
-//uncss
-// gulp.task('uncss', function () {
-//     return gulp.src('assets/css/*.css')
-//         .pipe(uncss({
-//             html: ['*.html' ]
-//         }))
-//         .pipe(gulp.dest('html'));
-// });
-//清除过期文件
-gulp.task('clean', function() {
-    return gulp.src('assets', {
-            read: false
-        })
-        .pipe(clean());
-});
 
 
 //tinypng图片压缩
