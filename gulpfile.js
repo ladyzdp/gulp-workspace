@@ -1,8 +1,8 @@
 var gulp = require('gulp'), //基础库
     clean = require('gulp-clean'),
 
-    sass = require('gulp-sass'),
-    merge = require('merge-stream'),
+    //sass = require('gulp-sass'),
+    //merge = require('merge-stream'),
     //minifyHtml = require('gulp-minify-html'),//压缩html
     //uglify = require('gulp-uglify'),
     plumber = require('gulp-plumber'), //错误跳出
