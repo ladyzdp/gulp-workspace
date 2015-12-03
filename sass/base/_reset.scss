@@ -1,15 +1,47 @@
 @charset "UTF-8";
+$font-family: "Microsoft YaHei",
+"Helvetica Neue",
+Helvetica,
+STHeiTi,
+sans-serif;
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 html {
-    font-family: sans-serif;
+    // font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
 
-body {
-    margin: 0
+body,
+dl,
+dd,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+pre {
+    margin: 0;
+}
+
+button,
+input,
+legend,
+menu,
+option,
+th,
+td,
+textarea {
+    padding: 0;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 0;
 }
 
 article,
@@ -47,7 +79,8 @@ template {
 }
 
 a {
-    background-color: transparent
+    background-color: transparent;
+    text-decoration: none;
 }
 
 a:active,
@@ -123,8 +156,8 @@ code,
 kbd,
 pre,
 samp {
-    font-family: monospace, monospace;
-    font-size: 1em
+    font-family: $font-family;
+    font-size: 1em;
 }
 
 button,
@@ -133,8 +166,8 @@ optgroup,
 select,
 textarea {
     color: inherit;
-    font: inherit;
-    margin: 0
+    font-family: $font-family;
+    margin: 0;
 }
 
 button {
@@ -217,4 +250,14 @@ table {
 td,
 th {
     padding: 0
+}
+
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+img {
+    border: 0;
 }

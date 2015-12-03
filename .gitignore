@@ -1,2 +1,6 @@
 /.gulp/
 /node_modules/
+/WEB-INF/
+/npm-debug.log/
+/release/
+.sublime-gulp.cache

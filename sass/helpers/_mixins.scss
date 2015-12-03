@@ -40,7 +40,7 @@
     @if $default-bg {
         background-color: $default-bg;
     }
-    @if  $hover-bg {
+    @if $hover-bg {
         &:hover {
             background-color: $hover-bg;
         }
@@ -68,5 +68,20 @@
 //         }
 //     }
 // }
-
 // @include images-auto();
+@mixin ellipsis($no-wrap: true) {
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+@mixin pie-clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    *zoom: 1;
+}

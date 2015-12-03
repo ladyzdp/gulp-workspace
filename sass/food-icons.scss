@@ -1,0 +1,93 @@
+@charset "utf-8";
+@import "compass";
+@import "mixins/retina-sprite-mixins";
+//  Food Icons
+$food-icon-normal: sprite-map("food-icons/120/normal/*.png");
+$food-icon-retina: sprite-map("food-icons/120/retina/*.png");
+[class^="icon-"],
+[class*=" icon-"] {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+}
+
+$sprite-normal-list:sprite-names($food-icon-normal);
+$sprite-retina-list:sprite-names($food-icon-retina);
+%sprite-pub-style {
+    background-repeat: no-repeat;
+    background-image: sprite-url($food-icon-normal);
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+        background-image: $food-icon-retina;
+        background-repeat: no-repeat;
+        // treat the @2x retina sprite sheet as 50% wide for double resolution upon display
+        $double-width: ceil(image-width(sprite-path($food-icon-retina)) / 2);
+        $auto-height: auto;
+        @include background-size($double-width $auto-height);
+    }
+}
+// 循环输出retina精灵
+@each $var in $sprite-normal-list {
+    .icon {
+        @at-root {
+            #{&}-#{$var} {
+                @include retina-sprite-background($var, $food-icon-normal, $food-icon-retina);
+                @extend %sprite-pub-style;
+            }
+        }
+    }
+}
+
+// .icon-beer {
+//     @include retina-sprite-background(beer, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-berry {
+//     @include retina-sprite-background(berry, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-bone {
+//     @include retina-sprite-background(bone, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-bowl {
+//     @include retina-sprite-background(bowl, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-burger {
+//     @include retina-sprite-background(burger, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-cone-icecream {
+//     @include retina-sprite-background(cone-icecream, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-doughnut {
+//     @include retina-sprite-background(doughnut, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-drinks {
+//     @include retina-sprite-background(drinks, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-egg-poach {
+//     @include retina-sprite-background(egg-poach, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-hotdog {
+//     @include retina-sprite-background(hotdog, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-juice {
+//     @include retina-sprite-background(juice, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-lemon {
+//     @include retina-sprite-background(lemon, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-lemon-2 {
+//     @include retina-sprite-background(lemon-2, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-lollipop {
+//     @include retina-sprite-background(lollipop, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-pomegranete {
+//     @include retina-sprite-background(pomegranete, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-popcorn {
+//     @include retina-sprite-background(popcorn, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-pumpkin {
+//     @include retina-sprite-background(pumpkin, $food-icon-normal, $food-icon-retina);
+// }
+// .icon-watermelon {
+//     @include retina-sprite-background(watermelon, $food-icon-normal, $food-icon-retina);
+// }
