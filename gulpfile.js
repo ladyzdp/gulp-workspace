@@ -66,9 +66,7 @@ gulp.task('tinypng', function() {
 gulp.task('watch', function() {
   gulp.watch([config.scssUrl, 'config.rb'], ['compass']); // 监听所有.scss文件监听confirg.rb
 
-  gulp.watch([config.imagesUrl, config.cssUrl, config.htmlUrl], function() {
-    livereload.listen();
-  });
+  gulp.watch([config.imagesUrl, config.cssUrl, config.htmlUrl].on('change', livereload.changed)
 });
 
 gulp.task('default', ['compass', 'tinypng', 'watch']);
