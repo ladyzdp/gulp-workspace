@@ -1,34 +1,43 @@
 @charset "UTF-8";
+
 /* functions */
 
 .fn {
-    @at-root {
-        #{&}-lt {
-            float: left;
-        }
-        #{&}-rt {
-            float: right;
-        }
-        #{&}-tac {
-            text-align: center;
-        }
-        #{&}-tar {
-            text-align: right;
-        }
-        #{&}-tal {
-            text-align: left;
-        }
-        #{&}-db {
-            display: black;
-        }
-        #{&}-dn {
-            display:inline-block;
-        }
-        #{&}-psr {
-            position: relative;
-        }
-        #{&}-psa {
-            position: absolute;
-        }
+  @at-root {
+    #{&}-lt {
+      float: left;
     }
+
+    #{&}-rt {
+      float: right;
+    }
+
+    #{&}-tac {
+      text-align: center;
+    }
+
+    #{&}-tar {
+      text-align: right;
+    }
+
+    #{&}-tal {
+      text-align: left;
+    }
+
+    #{&}-db {
+      display: black;
+    }
+
+    #{&}-dn {
+      display: inline-block;
+    }
+
+    #{&}-psr {
+      position: relative;
+    }
+
+    #{&}-psa {
+      position: absolute;
+    }
+  }
 }

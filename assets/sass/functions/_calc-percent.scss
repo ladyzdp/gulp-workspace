@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 // calc-percent: calculate the percent using the target ÷ context
-@function calc-percent( $target, $context ) {
-	@return $target / $context * 100%;
+@function calc-percent($target, $context) {
+  @return $target / $context * 100%;
 }
 
 // =======================Use===========================
