@@ -9,7 +9,7 @@ images_dir = "assets/images"
 javascripts_dir = "assets/js"
  cache = false 
 
- sourcemap =false
+ sourcemap =true
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
 #output_style = :compressed	
