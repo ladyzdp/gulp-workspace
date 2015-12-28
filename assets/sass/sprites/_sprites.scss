@@ -2,7 +2,7 @@
 
 @import "compass";
 
-$icons: sprite-map("mall-icons/*.png", $spacing: 10px) !global;
+$icons: sprite-map("icons/*.png", $spacing: 10px) !global;
 
 @mixin scale-background($name, $retina: $icons) {
   // background-image: sprite-url($retina);
