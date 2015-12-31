@@ -1,14 +1,11 @@
 @charset "UTF-8";
 
 /* 文本溢出隐藏 */
-
 .text-overflow {
-    @include ellipsis();
+  @include ellipsis;
 }
 
-
 /* 清除浮动 */
-
 .clearfix {
-    @include pie-clearfix();
+  @include pie-clearfix;
 }

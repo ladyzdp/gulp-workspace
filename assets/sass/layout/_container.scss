@@ -1,14 +1,19 @@
 @charset "UTF-8";
+
 /* 容器*/
-%clearfix{
-@include pie-clearfix;	
+%clearfix {
+  @include pie-clearfix;
 }
-.container{
-	width: 960px;
-	margin: 20px auto;
-	@extend %clearfix;
+
+.container {
+  width: 960px;
+  margin: 20px auto;
+
+  @extend %clearfix;
 }
-.container-full{
-	width: 100%;
-	@extend %clearfix;
+
+.container-full {
+  width: 100%;
+
+  @extend %clearfix;
 }
