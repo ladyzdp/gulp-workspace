@@ -9,11 +9,11 @@ $.livereload({
 
 //配置路径
 var configUrl = {
-  css: 'assets/css/*.css',
-  scss: 'assets/sass/*/*.scss',
-  js: 'assets/js/*.js',
-  images: 'assets/images/*.{png,jpg}',
-  html: '*.html'
+  css: 'dev/assets/css/*.css',
+  scss: 'dev/assets/sass/*/*.scss',
+  js: 'dev/assets/js/*.js',
+  images: 'dev/assets/images/*.{png,jpg}',
+  html: 'dev/static/*.html'
 
 };
 gulp.task('clean', function() {
@@ -26,28 +26,31 @@ gulp.task('clean', function() {
 
 // compass编译scss
 gulp.task('compass', function() {
-
   return gulp.src(configUrl.scss)
+
     .pipe($.plumber({
       errorHandler: function(error) {
         console.log(error.message);
         this.emit('end');
       }
     }))
-    .pipe($.compass({
+  .pipe($.compass({
       config_file: './config.rb',
-      css: 'assets/css',
-      sass: 'assets/sass',
-      images: 'assets/images'
+      css: 'dev/assets/css',
+      sass: 'dev/assets/sass',
+      images: 'dev/assets/images'
     }))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe($.csscomb())
-    .pipe(gulp.dest('assets/css'))
+    .pipe(gulp.dest('dev/assets/css'))
     .pipe($.livereload());
 
+});
+//压缩排序优化CSS
+gulp.task('minicss', function() {
+  return gulp.src(configUrl.css)
+    .pipe($.csscomb())
+    .pipe($.autoprefixer())
+    .pipe($.minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dev/assets/css'));
 });
 
 //图片压缩
@@ -55,14 +58,15 @@ gulp.task('tinypng', function() {
   return gulp.src(configUrl.images)
     //tinypng图片压缩
     .pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
-    .pipe(gulp.dest('assets/images'));
+    .pipe(gulp.dest('dev/assets/images'));
 });
 
 
 
 // 监听
 gulp.task('watch', function() {
-  gulp.watch([configUrl.scss, 'configUrl.rb'], ['compass']);
+  gulp.watch([configUrl.scss, 'config.rb'], ['compass']);
+  gulp.watch([configUrl.css], ['minicss']);
   gulp.watch([configUrl.images, configUrl.css, configUrl.html]).on('change', $.livereload.changed);
 });
-gulp.task('default', ['compass', 'tinypng', 'watch']);
+gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
