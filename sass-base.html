@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <a href="#" class="ui-btn ">提交</a>
+  <a href="#" class="ui-btn " id="submit">提交</a>
   <a href="#" class="ui-btn btn-blue">Blue btn</a>
   <div class="container">
     <div class="span1">span1</div>
@@ -60,7 +60,15 @@
     <span class="icons-money"></span>
     <span class="icons-shouhou"></span>
   </div>
-  <scrip src="dev/js/require.js" data-main="dev/js/main"></script>
+  <scrip src="dev/js/require.js" data-main="dev/js/main">
+    </script>
+    <script src="dev/js/jquery.min.js"></script>
+    <script src="dev/js/jquery.fn.js"></script>
+    <script>
+    $(document).ready(function() {
+   $("#submit").color('#333');
+    });
+    </script>
 </body>
 
 </html>
