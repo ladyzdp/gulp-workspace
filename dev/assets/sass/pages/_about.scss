@@ -1,3 +1,21 @@
 @charset "UTF-8";
 
 /* 关于我们 */
+#table1{
+border: 1px solid #eee;
+border-collapse:collapse;
+	tr{
+		border-top: 1px solid #eee;
+	}
+	td,th{
+		line-height: 100%;
+		padding: 10px 0;
+	}
+}
+.even{
+	background-color: #FFF;
+}
+.odd{
+
+	background-color: #f5f5f5;
+}
