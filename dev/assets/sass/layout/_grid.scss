@@ -9,19 +9,20 @@
 // } 
 //定义变量
 $grid-prefix: span !default;
-$grid-width: 80px !default;
+$grid-width: 30px !default;
 $grid-gutter: 20px !default;
 
 //定义placeholder代码片段
 %grid {
   float: left;
-  margin-left: $grid-gutter / 2;
-  margin-right: $grid-gutter / 2;
+  // margin-left: $grid-gutter / 2;
   background-color: #f60;
 }
-
+.gutter{
+	margin-right: $grid-gutter;
+}
 //使用@for循环输出12个网格
-@for $i from 1 through 12 {
+@for $i from 1 through 24 {
   .#{$grid-prefix}#{$i} {
     width: $grid-width * $i + $grid-gutter * ($i - 1);
 
