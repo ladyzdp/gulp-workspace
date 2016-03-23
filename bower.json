@@ -1,0 +1,34 @@
+{
+  "name": "sass-base",
+  "description": "sass-base",
+  "main": "gulpfile.js",
+  "authors": [
+    "sassplus"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "sass-base"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "handlebars": "^4.0.5",
+    "requirejs": "^2.1.22",
+    "react": "^0.14.7"
+  }
+}

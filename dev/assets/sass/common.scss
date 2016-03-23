@@ -1,20 +1,18 @@
 @charset "UTF-8";
-
 @import "helpers/variables";
 @import "helpers/mixins";
-
 @import "base/reset";
 @import "base/typography";
 @import "helpers/functions";
 @import "helpers/placeholders";
-@import "sprites/sprites";
+// @import "sprites/sprites";
+// @import "sprites/sprite1";
 @import "helpers/media-queries";
-
 @import "components/buttons";
+@import "components/form";
 @import "components/dropdown";
 @import "components/pagination";
-
-@import "layout/grid";
+// @import "layout/grid";
 @import "layout/container";
 @import "layout/header";
 @import "layout/nav";
@@ -23,10 +21,8 @@
 @import "layout/forms";
 @import "layout/sidebar";
 @import "layout/footer";
-
 @import "pages/index";
 @import "pages/product";
 @import "pages/about";
 @import "pages/contact";
-
 //联系我们

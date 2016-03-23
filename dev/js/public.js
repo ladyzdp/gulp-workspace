@@ -10,3 +10,5 @@ define([], function() {
 function talk(){
 	alert("test talk!");
 }
+
+

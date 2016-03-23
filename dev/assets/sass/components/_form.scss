@@ -1,0 +1,251 @@
+  @charset "UTF-8";
+  @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    border-radius: $border-radius;
+  }
+  
+  @mixin button-skin($color, $bg ,$border) {
+    color: $color;
+    background-color: $bg;
+    border-color: $border;
+    $active-bg: darken($bg, 10%);
+    $active-bd: darken($bg, 15%);
+    &:active,&:hover,&:visited {
+      color: $color;
+      background-color: $active-bg;
+      border-color: $active-bd;
+    }
+  }
+  
+  $bd-color:#d0d0d5;
+  $skin-color:#00a5e0;
+  $gray:#a5a5a5;
+  %pub {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: #fff;
+  }
+  
+  %hover {
+    &:hover {
+      border-color: #aaa;
+    }
+  }
+  
+  %checked {
+    position: relative;
+    &:before {
+      @extend %pub;
+      width: 6px;
+      top: 50%;
+      left: calc(50% - 6px);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    &:after {
+      @extend %pub;
+      width: 10px;
+      top: calc(50% - 1px);
+      left: calc(50% - 3px);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  }
+  
+  .ui {
+    @at-root {
+      //checkbox
+      #{&}-checkbox {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+      }
+      //label
+      #{&}-checkbox-label {
+        border: 2px solid transparent;
+        box-shadow: inset 0 1px, inset 1px 0, inset -1px 0, inset 0 -1px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #fff;
+        color: $bd-color;
+        vertical-align: -.4em;
+        background-clip: content-box;
+        transition: color .2s, background-color .1s;
+        overflow: hidden;
+        &:hover {
+          color: #aaa;
+        }
+      }
+      //radio
+      #{&}-radio {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+      }
+      #{&}-radio-label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $bd-color;
+        border-radius: 100%;
+        background-color: #fff;
+        box-sizing: border-box;
+        transition: border-color .2s;
+        overflow: hidden;
+        vertical-align: -.3em;
+        @extend %hover;
+        &:before {
+          content: '';
+          display: block;
+          width: 10px;
+          height: 10px;
+          border-radius: 10px;
+          background-color: $skin-color;
+          margin: 4px auto;
+          visibility: hidden;
+        }
+      }
+      //switch
+      #{&}-switch {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+      }
+      #{&}-switch-label {
+        display: inline-block;
+        width: 44px;
+        height: 26px;
+        border: 2px solid;
+        color: $bd-color;
+        border-radius: 26px;
+        background-color: currentColor;
+        box-sizing: border-box;
+        cursor: pointer;
+        vertical-align: -.3em;
+        transition: all .2s;
+        &:before {
+          content: '';
+          display: block;
+          width: 22px;
+          height: 22px;
+          border-radius: 22px;
+          background-color: #fff;
+          transition: margin-left .2s;
+        }
+      }
+      //file
+      #{&}-file {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+      }
+      #{&}-file-label {
+        display: inline-block;
+        // width: 50px;
+        height: 20px;
+        padding: 10px 15px;
+        color: #fff;
+        background-color: $skin-color;
+        border-radius: 4px;
+      }
+      //checked status
+      :checked {
+        + {
+          .ui-checkbox-label {
+            color: $skin-color;
+            background-color: $skin-color;
+            @extend %checked;
+          }
+          .ui-radio-label {
+            &:before {
+              visibility: visible;
+            }
+          }
+          .ui-switch-label {
+            color: $skin-color;
+            &:before {
+              margin-left: 18px;
+            }
+          }
+        }
+      }
+      :disabled {
+        + {
+          .ui-checkbox-label {
+            color: $gray;
+            background-color: $gray;
+            @extend %checked;
+          }
+          .ui-radio-label {
+            &:before {
+              visibility: visible;
+              background-color: $gray;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* btn */
+  
+  .btn {
+    display: inline-block;
+    @include button-size(6px, 12px, 14px, 4px);
+    // padding: 6px 12px;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    // transition: color .2s, background-color .1s;
+    &:focus {
+      outline: none;
+    }
+    @at-root {
+      #{&}-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+        &:hover {
+          color: #333;
+          background-color: #e6e6e6;
+          border-color: #adadad;
+        }
+      }
+    }
+  }
+  
+  .btn-primary {
+    @include button-skin($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  }
+  
+  .btn-secondary {
+    @include button-skin($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+  }
+  
+  .btn-info {
+    @include button-skin($btn-info-color, $btn-info-bg, $btn-info-border);
+  }
+  
+  .btn-success {
+    @include button-skin($btn-success-color, $btn-success-bg, $btn-success-border);
+  }
+  
+  .btn-warning {
+    @include button-skin($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  }
+  
+  .btn-danger {
+    @include button-skin($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  }
+  
+  // @mixin button-base($color,$bg,$)

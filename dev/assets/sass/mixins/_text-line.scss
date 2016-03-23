@@ -1,0 +1,22 @@
+/// Thanks https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/mixins/_alerts.scss
+@mixin line-clamp($clamp:2) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $clamp;
+    -webkit-box-orient: vertical;
+}
+
+// =============================Use=============================
+// .alert{
+//   @include alert-variant(#f36,darken(#f36,5%),#333);
+// }
+// ===============================Output==========================
+// .alert {
+//   background-color: #ff3366;
+//   border-color: #ff1a53;
+//   color: #333333;
+// }
+// .alert a {
+//   color: #1a1a1a;
+// }
+// ===============================================================

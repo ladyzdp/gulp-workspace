@@ -10,7 +10,7 @@ $.livereload({
 //配置路径
 var configUrl = {
   css: 'dev/assets/css/*.css',
-  scss: 'dev/assets/sass/*/*.scss',
+  scss: 'dev/assets/sass/{*.scss,*/*.scss}',
   js: 'dev/assets/js/*.js',
   images: 'dev/assets/images/*.{png,jpg}',
   html: 'dev/static/*.html'
@@ -49,7 +49,7 @@ gulp.task('minicss', function() {
   return gulp.src(configUrl.css)
     .pipe($.csscomb())
     .pipe($.autoprefixer())
-    .pipe($.minifyCss({compatibility: 'ie8'}))
+    // .pipe($.minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dev/assets/css'));
 });
 

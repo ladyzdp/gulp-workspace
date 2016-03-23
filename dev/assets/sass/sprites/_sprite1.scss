@@ -1,0 +1,53 @@
+@charset "UTF-8";
+@import "compass";
+$icons: sprite-map("icons1/*.png", $spacing: 20px) !global;
+@mixin scale-background($name, $retina: $icons) {
+  // background-image: sprite-url($retina);
+  background-position: 0 round(nth(sprite-position($retina, $name), 2) / 2);
+  // height: round(image-height(sprite-file($retina, $name)) / 2);
+  // width: round(image-width(sprite-file($retina, $name)) / 2);
+
+  width: 20px;
+  height: 20px;
+}
+
+[class^="icons1-"],
+[class*=" icons1-"] {
+  display: inline-block;
+}
+
+%sprite-pub-style1 {
+  background: $icons no-repeat center;
+  display: inline-block;
+  white-space: nowrap;
+    letter-spacing: -1em;
+    text-indent: -99em;
+    color: transparent;
+    // vertical-align: middle;
+  // treat the @2x retina sprite sheet as 50% wide for double resolution upon display
+  $double-width: ceil(image-width(sprite-path($icons)) / 2);
+  $auto-height: auto;
+  // @include background-size($double-width $auto-height);
+  // @include background-size(cover);
+
+  &:before {
+    content: '\3000';
+  }
+}
+
+$sprite-list: sprite-names($icons);
+// 循环输出精灵列表的样式
+@each $var in $sprite-list {
+  .icons1 {
+    @at-root #{&}-#{$var} {
+      @extend %sprite-pub-style1;
+      @include scale-background($var);
+    }
+  }
+}
+
+.ico-wrap{
+  margin: 10px;
+  line-height: 20px;
+  font-size: 12px;
+}
