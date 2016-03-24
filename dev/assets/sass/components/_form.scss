@@ -1,22 +1,5 @@
   @charset "UTF-8";
-  @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-    padding: $padding-y $padding-x;
-    font-size: $font-size;
-    border-radius: $border-radius;
-  }
   
-  @mixin button-skin($color, $bg ,$border) {
-    color: $color;
-    background-color: $bg;
-    border-color: $border;
-    $active-bg: darken($bg, 10%);
-    $active-bd: darken($bg, 15%);
-    &:active,&:hover,&:visited {
-      color: $color;
-      background-color: $active-bg;
-      border-color: $active-bd;
-    }
-  }
   
   $bd-color:#d0d0d5;
   $skin-color:#00a5e0;
@@ -187,65 +170,4 @@
       }
     }
   }
-  /* btn */
-  
-  .btn {
-    display: inline-block;
-    @include button-size(6px, 12px, 14px, 4px);
-    // padding: 6px 12px;
-    margin-bottom: 0;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    // transition: color .2s, background-color .1s;
-    &:focus {
-      outline: none;
-    }
-    @at-root {
-      #{&}-default {
-        color: #333;
-        background-color: #fff;
-        border-color: #ccc;
-        &:hover {
-          color: #333;
-          background-color: #e6e6e6;
-          border-color: #adadad;
-        }
-      }
-    }
-  }
-  
-  .btn-primary {
-    @include button-skin($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  }
-  
-  .btn-secondary {
-    @include button-skin($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-  }
-  
-  .btn-info {
-    @include button-skin($btn-info-color, $btn-info-bg, $btn-info-border);
-  }
-  
-  .btn-success {
-    @include button-skin($btn-success-color, $btn-success-bg, $btn-success-border);
-  }
-  
-  .btn-warning {
-    @include button-skin($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-  }
-  
-  .btn-danger {
-    @include button-skin($btn-danger-color, $btn-danger-bg, $btn-danger-border);
-  }
-  
-  // @mixin button-base($color,$bg,$)
+ 

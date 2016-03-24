@@ -1,27 +1,71 @@
 @charset "UTF-8";
 
-/* 按钮*/
-
-.ui {
-  @at-root {
-    //在这里编写
-    #{&}-btn {
-      display: inline-block;
-      padding: 0 12px;
-      line-height: 28px;
-      border-radius: 3px;
-      background-color: #e6e6e6;
-      font-size: 12px;
-      text-align: center;
-      cursor: pointer;
-    }
-  }
-}
-
-/* 按钮颜色 */
+/* btn */
 
 .btn {
-  @at-root #{&}-blue {
-    @include btn-bg-color(#0078e7);
-  }
+    display: inline-block;
+    @include button-size(10px, 14px, 14px, $btn-border-radius);
+    line-height: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    transition: background-color .2s ease, border-color .1s ease;
+    
+    &:focus {
+        outline: none;
+    }
+    @at-root {
+        //btn-size
+        #{&}-lg {
+            @include button-size($btn-padding-x-lg, $btn-padding-y-lg, $btn-font-size-lg, $btn-border-radius-lg);
+        }
+        #{&}-sm {
+            @include button-size($btn-padding-x-sm, $btn-padding-y-sm, $btn-font-size-sm, $btn-border-radius-sm);
+        }
+        #{&}-xs {
+            @include button-size($btn-padding-x-xs, $btn-padding-y-xs, $btn-font-size-xs, $btn-border-radius-xs);
+        }
+        //btn-block\
+        #{&}-block {
+            display: block;
+            width: 100%;
+        }
+    }
 }
+
+.btn-primary {
+    @include button-skin($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+
+.btn-secondary,
+.btn-default {
+    @include button-skin($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+
+.btn-info {
+    @include button-skin($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+
+.btn-success {
+    @include button-skin($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+
+.btn-warning {
+    @include button-skin($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+
+.btn-danger {
+    @include button-skin($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+// @mixin button-base($color,$bg,$)

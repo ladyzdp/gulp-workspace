@@ -1,19 +1,44 @@
 @charset "UTF-8";
 
 /* 容器*/
+
 %clearfix {
-  @include pie-clearfix;
+    @include pie-clearfix;
 }
 
 .container {
-  width: 960px;
-  margin: 20px auto;
-
-  @extend %clearfix;
+    width: 960px;
+    margin: 20px auto;
+    @extend %clearfix;
 }
 
 .container-full {
-  width: 100%;
+    width: 100%;
+    @extend %clearfix;
+}
 
-  @extend %clearfix;
+.main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.left-bar {
+    width: 20%;
+    height: 100vh;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    padding: 20px;
+    position: fixed;
+}
+
+.right-content {
+    width: 80%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-left: 20%;
+    div{
+    	margin: 10px 0;
+    }
 }

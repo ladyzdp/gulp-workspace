@@ -49,7 +49,7 @@ gulp.task('minicss', function() {
   return gulp.src(configUrl.css)
     .pipe($.csscomb())
     .pipe($.autoprefixer())
-    // .pipe($.minifyCss({compatibility: 'ie8'}))
+    .pipe($.minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dev/assets/css'));
 });
 
