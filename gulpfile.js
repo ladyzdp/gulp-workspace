@@ -3,9 +3,9 @@ var gulp = require('gulp'), //基础库
   $ = gulpLoadPlugins();
 
 
-$.livereload({
-  start: true
-})
+// $.livereload({
+//   start: true
+// })
 
 //配置路径
 var configUrl = {
@@ -41,14 +41,14 @@ gulp.task('compass', function() {
       images: 'dev/assets/images'
     }))
     .pipe(gulp.dest('dev/assets/css'))
-    .pipe($.livereload());
+    // .pipe($.livereload());
 
 });
 //压缩排序优化CSS
 gulp.task('minicss', function() {
   return gulp.src(configUrl.css)
-    .pipe($.csscomb())
     .pipe($.autoprefixer())
+    .pipe($.csscomb())
     .pipe($.minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dev/assets/css'));
 });
@@ -67,6 +67,6 @@ gulp.task('tinypng', function() {
 gulp.task('watch', function() {
   gulp.watch([configUrl.scss, 'config.rb'], ['compass']);
   gulp.watch([configUrl.css], ['minicss']);
-  gulp.watch([configUrl.images, configUrl.css, configUrl.html]).on('change', $.livereload.changed);
+  // gulp.watch([configUrl.images, configUrl.css, configUrl.html]).on('change', $.livereload.changed);
 });
 gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
