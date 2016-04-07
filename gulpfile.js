@@ -49,7 +49,7 @@ gulp.task('minicss', function() {
   return gulp.src(configUrl.css)
     .pipe($.autoprefixer())
     .pipe($.csscomb())
-    .pipe($.minifyCss({compatibility: 'ie8'}))
+    // .pipe($.minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dev/assets/css'));
 });
 
@@ -66,7 +66,8 @@ gulp.task('tinypng', function() {
 // 监听
 gulp.task('watch', function() {
   gulp.watch([configUrl.scss, 'config.rb'], ['compass']);
-  gulp.watch([configUrl.css], ['minicss']);
+  // gulp.watch([configUrl.css], ['minicss']);  
   // gulp.watch([configUrl.images, configUrl.css, configUrl.html]).on('change', $.livereload.changed);
 });
-gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
+// gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
+gulp.task('default', ['compass', 'watch']);

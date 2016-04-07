@@ -11,6 +11,27 @@
 </head>
 
 <body>
+    <header id="header" class="header">
+        <div class="content-box">
+            <h1 class="nav-logo"><a href="#">LOGO</a></h1>
+            <div class="nav-bar-box" id="nav">
+                <ul class="nav-bar">
+                    <li><a href="#">网站首页</a></li>
+                    <li><a href="#">产品中心</a></li>
+                    <li><a href="#">案例中心</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+            <button type="button" class="navbar-toggle" id="toggle">
+                MENU
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </header>
+    <!-- /header -->
     <main class="main">
         <div class="left-bar">
             <ul>
@@ -129,6 +150,21 @@
             </section>
         </div>
     </main>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#toggle").on('click', function() {
+            if ($("#nav").is(':visible')) {
+                $("#nav").slideUp(200);
+
+            } else {
+                $("#nav").slideDown(200);
+            }
+        });
+
+       
+    });
+    </script>
 </body>
 
 </html>
