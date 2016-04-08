@@ -10,7 +10,7 @@ var gulp = require('gulp'), //基础库
 //配置路径
 var configUrl = {
   css: 'dev/assets/css/*.css',
-  scss: 'dev/assets/sass/{*.scss,*/*.scss}',
+  scss: 'dev/assets/sass/**/{*.scss,*/*.scss}',
   js: 'dev/assets/js/*.js',
   images: 'dev/assets/images/*.{png,jpg}',
   html: 'dev/static/*.html'
@@ -25,25 +25,36 @@ gulp.task('clean', function() {
 
 
 // compass编译scss
-gulp.task('compass', function() {
+// gulp.task('compass', function() {
+//   return gulp.src(configUrl.scss)
+
+//     .pipe($.plumber({
+//       errorHandler: function(error) {
+//         console.log(error.message);
+//         this.emit('end');
+//       }
+//     }))
+//   .pipe($.compass({
+//       config_file: './config.rb',
+//       css: 'dev/assets/css',
+//       sass: 'dev/assets/sass',
+//       images: 'dev/assets/images'
+//     }))
+//     .pipe(gulp.dest('dev/assets/css'))
+//     // .pipe($.livereload());
+
+// });
+gulp.task('sass', function () {
   return gulp.src(configUrl.scss)
-
-    .pipe($.plumber({
-      errorHandler: function(error) {
-        console.log(error.message);
-        this.emit('end');
-      }
-    }))
-  .pipe($.compass({
-      config_file: './config.rb',
-      css: 'dev/assets/css',
-      sass: 'dev/assets/sass',
-      images: 'dev/assets/images'
-    }))
-    .pipe(gulp.dest('dev/assets/css'))
-    // .pipe($.livereload());
-
+    .pipe($.sourcemaps.init())
+    .pipe($.sass({outputStyle: 'compressed'}).on('error', $.sass.logError))
+    .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('./dist/css'));
+    //.pipe($.livereload());
 });
+
+
+
 //压缩排序优化CSS
 gulp.task('minicss', function() {
   return gulp.src(configUrl.css)
@@ -65,9 +76,11 @@ gulp.task('tinypng', function() {
 
 // 监听
 gulp.task('watch', function() {
-  gulp.watch([configUrl.scss, 'config.rb'], ['compass']);
+  // gulp.watch([configUrl.scss, 'config.rb'], ['compass']);
+  //gulp.watch(configUrl.scss, ['sass']).on('change', $.livereload.changed);
+  gulp.watch(configUrl.scss, ['sass']);
   // gulp.watch([configUrl.css], ['minicss']);  
-  // gulp.watch([configUrl.images, configUrl.css, configUrl.html]).on('change', $.livereload.changed);
+  //gulp.watch('./dist/css/*.css').on('change', $.livereload.changed);
 });
 // gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
-gulp.task('default', ['compass', 'watch']);
+gulp.task('default', ['sass', 'watch']);
