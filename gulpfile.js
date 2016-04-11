@@ -50,22 +50,23 @@ gulp.task('clean', function() {
 // });
 
 
-gulp.task('sprites', function () {
-  var spriteData = gulp.src('./dev/assets/images/icons/*.png')
+gulp.task('sprites', function generateSpritesheets () {
+  var spriteData = gulp.src('./dev/assets/images/icons/normal/*.png')
   .pipe($.spritesmith({
+    retinaSrcFilter: './dev/assets/images/icons/normal/*-2x.png',
+    retinaImgName: '../images/sprite-2x.png',
     imgName: 'sprite.png',
-    retinaSrcFilter: '*@2x.png',
-    retinaImgName: 'sprite@2x.png',
     imgPath:'../images/sprite.png',
     cssName: '_sprites.scss',
-    cssFormat: 'scss',
+    //cssName: 'sprites.scss',
+    //cssFormat: 'scss',
     padding:20,
     algorithm:'',//top-down,left-right,diagonal,alt-diagonal,binary-tree
 
   }));
   var imgStream = spriteData.img
   .pipe(buffer())
-  .pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
+  //.pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
   .pipe(gulp.dest('./dev/assets/images'))
 
   var cssStream = spriteData.css

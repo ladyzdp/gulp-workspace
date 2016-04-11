@@ -19,10 +19,22 @@
   }
 }
 
+
+@mixin retina-sprites1($retina-groups) {
+  @each $retina-group in $retina-groups {
+    $sprite-name: nth($retina-group, 1);
+    .icons-#{$sprite-name} {
+      @include retina-sprite($retina-group);
+    }
+  }
+}
+
+
 [class^="icons-"],
 [class*=" icons-"] {
   display: inline-block;
 }
 
 @include sprites1($spritesheet-sprites);
+@include retina-sprites1($retina-groups);
 
