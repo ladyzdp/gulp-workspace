@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import "sprites";
+
+// @mixin scale-background($sprites) {
+//   // background-image: sprite-url($retina);
+//   $strpi
+//   background-position: 0 round(nth(sprite-position($retina, $name), 2) / 2);
+//   height: round(image-height(sprite-file($retina, $name)) / 2);
+//   width: round(image-width(sprite-file($retina, $name)) / 2);
+// }
+
+
+@mixin sprites1($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .icons-#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
+
+[class^="icons-"],
+[class*=" icons-"] {
+  display: inline-block;
+}
+
+@include sprites1($spritesheet-sprites);
+

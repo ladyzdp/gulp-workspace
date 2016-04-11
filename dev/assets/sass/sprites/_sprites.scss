@@ -1,41 +1,239 @@
-@charset "UTF-8";
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
 
-@import "compass";
-
-$icons: sprite-map("icons/*.png", $spacing: 10px) !global;
-
-@mixin scale-background($name, $retina: $icons) {
-  // background-image: sprite-url($retina);
-  background-position: 0 round(nth(sprite-position($retina, $name), 2) / 2);
-  height: round(image-height(sprite-file($retina, $name)) / 2);
-  width: round(image-width(sprite-file($retina, $name)) / 2);
+.icon-home {
+  width: $icon-home-width;
 }
 
-[class^="icons-"],
-[class*=" icons-"] {
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$beer-name: 'beer';
+$beer-x: 0px;
+$beer-y: 296px;
+$beer-offset-x: 0px;
+$beer-offset-y: -296px;
+$beer-width: 64px;
+$beer-height: 64px;
+$beer-total-width: 508px;
+$beer-total-height: 360px;
+$beer-image: '../images/sprite.png';
+$beer: (0px, 296px, 0px, -296px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'beer', );
+$berry-name: 'berry';
+$berry-x: 84px;
+$berry-y: 296px;
+$berry-offset-x: -84px;
+$berry-offset-y: -296px;
+$berry-width: 64px;
+$berry-height: 64px;
+$berry-total-width: 508px;
+$berry-total-height: 360px;
+$berry-image: '../images/sprite.png';
+$berry: (84px, 296px, -84px, -296px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'berry', );
+$bone-name: 'bone';
+$bone-x: 168px;
+$bone-y: 296px;
+$bone-offset-x: -168px;
+$bone-offset-y: -296px;
+$bone-width: 64px;
+$bone-height: 64px;
+$bone-total-width: 508px;
+$bone-total-height: 360px;
+$bone-image: '../images/sprite.png';
+$bone: (168px, 296px, -168px, -296px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'bone', );
+$bowl-name: 'bowl';
+$bowl-x: 336px;
+$bowl-y: 296px;
+$bowl-offset-x: -336px;
+$bowl-offset-y: -296px;
+$bowl-width: 64px;
+$bowl-height: 64px;
+$bowl-total-width: 508px;
+$bowl-total-height: 360px;
+$bowl-image: '../images/sprite.png';
+$bowl: (336px, 296px, -336px, -296px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'bowl', );
+$hotdog-name: 'hotdog';
+$hotdog-x: 444px;
+$hotdog-y: 0px;
+$hotdog-offset-x: -444px;
+$hotdog-offset-y: 0px;
+$hotdog-width: 64px;
+$hotdog-height: 64px;
+$hotdog-total-width: 508px;
+$hotdog-total-height: 360px;
+$hotdog-image: '../images/sprite.png';
+$hotdog: (444px, 0px, -444px, 0px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'hotdog', );
+$juice-name: 'juice';
+$juice-x: 444px;
+$juice-y: 84px;
+$juice-offset-x: -444px;
+$juice-offset-y: -84px;
+$juice-width: 64px;
+$juice-height: 64px;
+$juice-total-width: 508px;
+$juice-total-height: 360px;
+$juice-image: '../images/sprite.png';
+$juice: (444px, 84px, -444px, -84px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'juice', );
+$juice-2x-name: 'juice@2x';
+$juice-2x-x: 0px;
+$juice-2x-y: 0px;
+$juice-2x-offset-x: 0px;
+$juice-2x-offset-y: 0px;
+$juice-2x-width: 128px;
+$juice-2x-height: 128px;
+$juice-2x-total-width: 508px;
+$juice-2x-total-height: 360px;
+$juice-2x-image: '../images/sprite.png';
+$juice-2x: (0px, 0px, 0px, 0px, 128px, 128px, 508px, 360px, '../images/sprite.png', 'juice@2x', );
+$lemon-2-name: 'lemon-2';
+$lemon-2-x: 296px;
+$lemon-2-y: 148px;
+$lemon-2-offset-x: -296px;
+$lemon-2-offset-y: -148px;
+$lemon-2-width: 64px;
+$lemon-2-height: 64px;
+$lemon-2-total-width: 508px;
+$lemon-2-total-height: 360px;
+$lemon-2-image: '../images/sprite.png';
+$lemon-2: (296px, 148px, -296px, -148px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'lemon-2', );
+$lemon-2-2x-name: 'lemon-2@2x';
+$lemon-2-2x-x: 148px;
+$lemon-2-2x-y: 0px;
+$lemon-2-2x-offset-x: -148px;
+$lemon-2-2x-offset-y: 0px;
+$lemon-2-2x-width: 128px;
+$lemon-2-2x-height: 128px;
+$lemon-2-2x-total-width: 508px;
+$lemon-2-2x-total-height: 360px;
+$lemon-2-2x-image: '../images/sprite.png';
+$lemon-2-2x: (148px, 0px, -148px, 0px, 128px, 128px, 508px, 360px, '../images/sprite.png', 'lemon-2@2x', );
+$lemon-name: 'lemon';
+$lemon-x: 252px;
+$lemon-y: 296px;
+$lemon-offset-x: -252px;
+$lemon-offset-y: -296px;
+$lemon-width: 64px;
+$lemon-height: 64px;
+$lemon-total-width: 508px;
+$lemon-total-height: 360px;
+$lemon-image: '../images/sprite.png';
+$lemon: (252px, 296px, -252px, -296px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'lemon', );
+$lemon-2x-name: 'lemon@2x';
+$lemon-2x-x: 0px;
+$lemon-2x-y: 148px;
+$lemon-2x-offset-x: 0px;
+$lemon-2x-offset-y: -148px;
+$lemon-2x-width: 128px;
+$lemon-2x-height: 128px;
+$lemon-2x-total-width: 508px;
+$lemon-2x-total-height: 360px;
+$lemon-2x-image: '../images/sprite.png';
+$lemon-2x: (0px, 148px, 0px, -148px, 128px, 128px, 508px, 360px, '../images/sprite.png', 'lemon@2x', );
+$lollipop-2x-name: 'lollipop@2x';
+$lollipop-2x-x: 148px;
+$lollipop-2x-y: 148px;
+$lollipop-2x-offset-x: -148px;
+$lollipop-2x-offset-y: -148px;
+$lollipop-2x-width: 128px;
+$lollipop-2x-height: 128px;
+$lollipop-2x-total-width: 508px;
+$lollipop-2x-total-height: 360px;
+$lollipop-2x-image: '../images/sprite.png';
+$lollipop-2x: (148px, 148px, -148px, -148px, 128px, 128px, 508px, 360px, '../images/sprite.png', 'lollipop@2x', );
+$pomegranete-2x-name: 'pomegranete@2x';
+$pomegranete-2x-x: 296px;
+$pomegranete-2x-y: 0px;
+$pomegranete-2x-offset-x: -296px;
+$pomegranete-2x-offset-y: 0px;
+$pomegranete-2x-width: 128px;
+$pomegranete-2x-height: 128px;
+$pomegranete-2x-total-width: 508px;
+$pomegranete-2x-total-height: 360px;
+$pomegranete-2x-image: '../images/sprite.png';
+$pomegranete-2x: (296px, 0px, -296px, 0px, 128px, 128px, 508px, 360px, '../images/sprite.png', 'pomegranete@2x', );
+$watermelon-name: 'watermelon';
+$watermelon-x: 444px;
+$watermelon-y: 168px;
+$watermelon-offset-x: -444px;
+$watermelon-offset-y: -168px;
+$watermelon-width: 64px;
+$watermelon-height: 64px;
+$watermelon-total-width: 508px;
+$watermelon-total-height: 360px;
+$watermelon-image: '../images/sprite.png';
+$watermelon: (444px, 168px, -444px, -168px, 64px, 64px, 508px, 360px, '../images/sprite.png', 'watermelon', );
+$spritesheet-width: 508px;
+$spritesheet-height: 360px;
+$spritesheet-image: '../images/sprite.png';
+$spritesheet-sprites: ($beer, $berry, $bone, $bowl, $hotdog, $juice, $juice-2x, $lemon-2, $lemon-2-2x, $lemon, $lemon-2x, $lollipop-2x, $pomegranete-2x, $watermelon, );
+$spritesheet: (508px, 360px, '../images/sprite.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
   display: inline-block;
 }
 
-%sprite-pub-style {
-  background-image: $icons;
-  background-repeat: no-repeat;
-
-  // treat the @2x retina sprite sheet as 50% wide for double resolution upon display
-  $double-width: ceil(image-width(sprite-path($icons)) / 2);
-  $auto-height: auto;
-
-  @include background-size($double-width $auto-height);
+// HTML
+<i class="icon icon-home"></i>
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
 }
 
-$sprite-list: sprite-names($icons);
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
 
-// 循环输出精灵列表的样式
-@each $var in $sprite-list {
-  .icons {
-    @at-root #{&}-#{$var} {
-      @extend %sprite-pub-style;
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
 
-      @include scale-background($var);
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
     }
   }
 }

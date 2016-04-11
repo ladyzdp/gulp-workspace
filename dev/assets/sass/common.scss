@@ -7,7 +7,7 @@
 @import "helpers/placeholders";
 @import "mixins/buttons";
 // @import "sprites/sprites";
-// @import "sprites/sprite1";
+@import "sprites/sprite2";
 @import "helpers/media-queries";
 @import "components/buttons";
 @import "components/form";
@@ -27,4 +27,5 @@
 @import "pages/product";
 @import "pages/about";
 @import "pages/contact";
+// @include sprites();
 //联系我们

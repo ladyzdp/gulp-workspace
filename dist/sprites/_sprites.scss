@@ -1,0 +1,17 @@
+@mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+}
+
+@mixin sprites($sprites) {
+    @each $sprite in $sprites {
+        {
+            @include sprite($sprite)
+        }
+    }
+}
+
+
+@include sprites();
