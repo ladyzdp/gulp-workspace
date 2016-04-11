@@ -1,40 +1,30 @@
 @charset "UTF-8";
 @import "sprites";
 
-// @mixin scale-background($sprites) {
-//   // background-image: sprite-url($retina);
-//   $strpi
-//   background-position: 0 round(nth(sprite-position($retina, $name), 2) / 2);
-//   height: round(image-height(sprite-file($retina, $name)) / 2);
-//   width: round(image-width(sprite-file($retina, $name)) / 2);
-// }
-
-
-@mixin sprites1($sprites) {
-  @each $sprite in $sprites {
-    $sprite-name: nth($sprite, 10);
-    .icons-#{$sprite-name} {
-      @include sprite($sprite);
+@mixin icons-sprites($sprites) {
+    @each $sprite in $sprites {
+        $sprite-name: nth($sprite, 10);
+        .icons-#{$sprite-name} {
+            @include sprite($sprite);
+        }
     }
-  }
 }
 
-
-@mixin retina-sprites1($retina-groups) {
-  @each $retina-group in $retina-groups {
-    $sprite-name: nth($retina-group, 1);
-    .icons-#{$sprite-name} {
-      @include retina-sprite($retina-group);
+@mixin icons-retina-sprites($retina-groups) {
+    @each $retina-group in $retina-groups {
+        $sprite-name: nth($retina-group, 1);
+        .icons-#{$sprite-name} {
+            @include retina-sprite($retina-group);
+        }
     }
-  }
 }
-
 
 [class^="icons-"],
 [class*=" icons-"] {
-  display: inline-block;
+    display: inline-block;
 }
 
-@include sprites1($spritesheet-sprites);
-@include retina-sprites1($retina-groups);
-
+@include icons-sprites($spritesheet-sprites);
+@include icons-retina-sprites($retina-groups);
+// @include sprites($spritesheet-sprites);
+// @include retina-sprites($retina-groups);

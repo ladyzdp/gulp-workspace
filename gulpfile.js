@@ -50,7 +50,7 @@ gulp.task('clean', function() {
 // });
 
 
-gulp.task('sprites', function generateSpritesheets () {
+gulp.task('sprites', function () {
   var spriteData = gulp.src('./dev/assets/images/icons/normal/*.png')
   .pipe($.spritesmith({
     retinaSrcFilter: './dev/assets/images/icons/normal/*-2x.png',
@@ -58,8 +58,22 @@ gulp.task('sprites', function generateSpritesheets () {
     imgName: 'sprite.png',
     imgPath:'../images/sprite.png',
     cssName: '_sprites.scss',
-    //cssName: 'sprites.scss',
+    //cssBase: '.icons-',
     //cssFormat: 'scss',
+    //cssSpritesheetName :'icons-',
+    //spritesheet:'.icon-'
+    cssOpts: {
+      cssClass: function (item) {
+        // If this is a hover sprite, name it as a hover one (e.g. 'home-hover' -> 'home:hover')
+        if (item.name.indexOf('-hover') !== -1) {
+          return '.icon-' + item.name.replace('-hover', ':hover');
+          // Otherwise, use the name as the selector (e.g. 'home' -> 'home')
+        } else {
+          return '.icon-' + item.name;
+        }
+        return '.icon-' + item.name;
+      }
+    },
     padding:20,
     algorithm:'',//top-down,left-right,diagonal,alt-diagonal,binary-tree
 
