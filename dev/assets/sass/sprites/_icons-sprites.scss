@@ -1,0 +1,238 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$beer-name: 'beer';
+$beer-x: 0px;
+$beer-y: 0px;
+$beer-offset-x: 0px;
+$beer-offset-y: 0px;
+$beer-width: 64px;
+$beer-height: 64px;
+$beer-total-width: 148px;
+$beer-total-height: 148px;
+$beer-image: '../images/sprite.png';
+$beer: (0px, 0px, 0px, 0px, 64px, 64px, 148px, 148px, '../images/sprite.png', 'beer', );
+$berry-name: 'berry';
+$berry-x: 84px;
+$berry-y: 0px;
+$berry-offset-x: -84px;
+$berry-offset-y: 0px;
+$berry-width: 64px;
+$berry-height: 64px;
+$berry-total-width: 148px;
+$berry-total-height: 148px;
+$berry-image: '../images/sprite.png';
+$berry: (84px, 0px, -84px, 0px, 64px, 64px, 148px, 148px, '../images/sprite.png', 'berry', );
+$bone-name: 'bone';
+$bone-x: 0px;
+$bone-y: 84px;
+$bone-offset-x: 0px;
+$bone-offset-y: -84px;
+$bone-width: 64px;
+$bone-height: 64px;
+$bone-total-width: 148px;
+$bone-total-height: 148px;
+$bone-image: '../images/sprite.png';
+$bone: (0px, 84px, 0px, -84px, 64px, 64px, 148px, 148px, '../images/sprite.png', 'bone', );
+$bowl-name: 'bowl';
+$bowl-x: 84px;
+$bowl-y: 84px;
+$bowl-offset-x: -84px;
+$bowl-offset-y: -84px;
+$bowl-width: 64px;
+$bowl-height: 64px;
+$bowl-total-width: 148px;
+$bowl-total-height: 148px;
+$bowl-image: '../images/sprite.png';
+$bowl: (84px, 84px, -84px, -84px, 64px, 64px, 148px, 148px, '../images/sprite.png', 'bowl', );
+$beer-2x-name: 'beer-2x';
+$beer-2x-x: 0px;
+$beer-2x-y: 0px;
+$beer-2x-offset-x: 0px;
+$beer-2x-offset-y: 0px;
+$beer-2x-width: 128px;
+$beer-2x-height: 128px;
+$beer-2x-total-width: 296px;
+$beer-2x-total-height: 296px;
+$beer-2x-image: '../images/sprite-2x.png';
+$beer-2x: (0px, 0px, 0px, 0px, 128px, 128px, 296px, 296px, '../images/sprite-2x.png', 'beer-2x', );
+$berry-2x-name: 'berry-2x';
+$berry-2x-x: 168px;
+$berry-2x-y: 0px;
+$berry-2x-offset-x: -168px;
+$berry-2x-offset-y: 0px;
+$berry-2x-width: 128px;
+$berry-2x-height: 128px;
+$berry-2x-total-width: 296px;
+$berry-2x-total-height: 296px;
+$berry-2x-image: '../images/sprite-2x.png';
+$berry-2x: (168px, 0px, -168px, 0px, 128px, 128px, 296px, 296px, '../images/sprite-2x.png', 'berry-2x', );
+$bone-2x-name: 'bone-2x';
+$bone-2x-x: 0px;
+$bone-2x-y: 168px;
+$bone-2x-offset-x: 0px;
+$bone-2x-offset-y: -168px;
+$bone-2x-width: 128px;
+$bone-2x-height: 128px;
+$bone-2x-total-width: 296px;
+$bone-2x-total-height: 296px;
+$bone-2x-image: '../images/sprite-2x.png';
+$bone-2x: (0px, 168px, 0px, -168px, 128px, 128px, 296px, 296px, '../images/sprite-2x.png', 'bone-2x', );
+$bowl-2x-name: 'bowl-2x';
+$bowl-2x-x: 168px;
+$bowl-2x-y: 168px;
+$bowl-2x-offset-x: -168px;
+$bowl-2x-offset-y: -168px;
+$bowl-2x-width: 128px;
+$bowl-2x-height: 128px;
+$bowl-2x-total-width: 296px;
+$bowl-2x-total-height: 296px;
+$bowl-2x-image: '../images/sprite-2x.png';
+$bowl-2x: (168px, 168px, -168px, -168px, 128px, 128px, 296px, 296px, '../images/sprite-2x.png', 'bowl-2x', );
+$spritesheet-width: 148px;
+$spritesheet-height: 148px;
+$spritesheet-image: '../images/sprite.png';
+$spritesheet-sprites: ($beer, $berry, $bone, $bowl, );
+$spritesheet: (148px, 148px, '../images/sprite.png', $spritesheet-sprites, );
+$retina-spritesheet-width: 296px;
+$retina-spritesheet-height: 296px;
+$retina-spritesheet-image: '../images/sprite-2x.png';
+$retina-spritesheet-sprites: ($beer-2x, $berry-2x, $bone-2x, $bowl-2x, );
+$retina-spritesheet: (296px, 296px, '../images/sprite-2x.png', $retina-spritesheet-sprites, );
+
+/*
+These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
+
+The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
+*/
+$beer-group-name: 'beer';
+$beer-group: ('beer', $beer, $beer-2x, );
+$berry-group-name: 'berry';
+$berry-group: ('berry', $berry, $berry-2x, );
+$bone-group-name: 'bone';
+$bone-group: ('bone', $bone, $bone-2x, );
+$bowl-group-name: 'bowl';
+$bowl-group: ('bowl', $bowl, $bowl-2x, );
+$retina-groups: ($beer-group, $berry-group, $bone-group, $bowl-group, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
+  It should be used with a "retina group" variable.
+
+The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
+
+$icon-home-group: ('icon-home', $icon-home, $icon-home-2x, );
+
+.icon-home {
+  @include retina-sprite($icon-home-group);
+}
+*/
+@mixin sprite-background-size($sprite) {
+  $sprite-total-width: nth($sprite, 7);
+  $sprite-total-height: nth($sprite, 8);
+  background-size: $sprite-total-width $sprite-total-height;
+}
+
+@mixin retina-sprite($retina-group) {
+  $normal-sprite: nth($retina-group, 2);
+  $retina-sprite: nth($retina-group, 3);
+  @include sprite($normal-sprite);
+
+  @media (-webkit-min-device-pixel-ratio: 2),
+         (min-resolution: 192dpi) {
+    @include sprite-image($retina-sprite);
+    @include sprite-background-size($normal-sprite);
+  }
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
+
+/*
+The `retina-sprites` mixin generates a CSS rule and media query for retina groups
+  This yields the same output as CSS retina template but can be overridden in SCSS
+
+@include retina-sprites($retina-groups);
+*/
+@mixin retina-sprites($retina-groups) {
+  @each $retina-group in $retina-groups {
+    $sprite-name: nth($retina-group, 1);
+    .#{$sprite-name} {
+      @include retina-sprite($retina-group);
+    }
+  }
+}

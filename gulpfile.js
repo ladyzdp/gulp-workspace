@@ -1,10 +1,10 @@
-var gulp = require('gulp'), //基础库
-  gulpLoadPlugins = require('gulp-load-plugins'),
-  buffer = require('vinyl-buffer'),
-  merge = require('merge-stream'),
-  gulpSequence = require('gulp-sequence'),
-  cleanCSS = require('gulp-clean-css'),
-  $ = gulpLoadPlugins();
+var gulp = require('gulp'),
+    gulpLoadPlugins = require('gulp-load-plugins'),
+    buffer = require('vinyl-buffer'),
+    merge = require('merge-stream'),
+    gulpSequence = require('gulp-sequence'),
+    cleanCSS = require('gulp-clean-css'),
+    $ = gulpLoadPlugins();
 
 
 // $.livereload({
@@ -12,91 +12,85 @@ var gulp = require('gulp'), //基础库
 // })
 
 //配置路径
+var baseUrl = './dev/assets/';
 var configUrl = {
-  css: './dev/assets/css/*.css',
-  scss: './dev/assets/sass/**/*.scss',
-  js: './dev/assets/js/*.js',
-  images: './dev/assets/images/*.{png,jpg}',
-  html: './dev/static/*.html'
-
-};
-gulp.task('clean', function() {
-  return gulp.src('assets', {
-      read: false
-    })
-    .pipe($.clean());
-});
-
-
-// compass编译scss
-// gulp.task('compass', function() {
-//   return gulp.src(configUrl.scss)
-
-//     .pipe($.plumber({
-//       errorHandler: function(error) {
-//         console.log(error.message);
-//         this.emit('end');
-//       }
-//     }))
-//   .pipe($.compass({
-//       config_file: './config.rb',
-//       css: 'dev/assets/css',
-//       sass: 'dev/assets/sass',
-//       images: 'dev/assets/images'
-//     }))
-//     .pipe(gulp.dest('dev/assets/css'))
-//     // .pipe($.livereload());
-
-// });
-
-
-gulp.task('sprites', function () {
-  var spriteData = gulp.src('./dev/assets/images/icons/normal/*.png')
-  .pipe($.spritesmith({
-    retinaSrcFilter: './dev/assets/images/icons/normal/*-2x.png',
-    retinaImgName: '../images/sprite-2x.png',
-    imgName: 'sprite.png',
-    imgPath:'../images/sprite.png',
-    cssName: '_sprites.scss',
-    //cssBase: '.icons-',
-    //cssFormat: 'scss',
-    //cssSpritesheetName :'icons-',
-    //spritesheet:'.icon-'
-    cssOpts: {
-      cssClass: function (item) {
-        // If this is a hover sprite, name it as a hover one (e.g. 'home-hover' -> 'home:hover')
-        if (item.name.indexOf('-hover') !== -1) {
-          return '.icon-' + item.name.replace('-hover', ':hover');
-          // Otherwise, use the name as the selector (e.g. 'home' -> 'home')
-        } else {
-          return '.icon-' + item.name;
-        }
-        return '.icon-' + item.name;
-      }
+    assets: {
+        css: baseUrl + 'css/*.css',
+        scss: baseUrl + 'sass/**/*.scss',
+        js: baseUrl + 'js/*.js',
+        images: baseUrl + 'images/*.{png,jpg}',
+        html: './dev/static/*.html'
     },
-    padding:20,
-    algorithm:'',//top-down,left-right,diagonal,alt-diagonal,binary-tree
+    dist: {
+        css: baseUrl + 'css/',
+        images: baseUrl + 'images/',
+        js: baseUrl + 'js/',
+        scss: baseUrl + 'sass/',
+        sprites: baseUrl + 'sass/sprites/'
 
-  }));
-  var imgStream = spriteData.img
-  .pipe(buffer())
-  //.pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
-  .pipe(gulp.dest('./dev/assets/images'))
+    }
+};
 
-  var cssStream = spriteData.css
-  .pipe(gulp.dest('./dev/assets/sass/sprites'))
-
-  // return spriteData.pipe(gulp.dest('./dist/sprites'));
-  return merge(imgStream, cssStream);
+//清除文件
+gulp.task('clean', function() {
+    return gulp.src('assets', {
+            read: false
+        })
+        .pipe($.clean());
 });
 
-gulp.task('sass', function () {
-  return gulp.src(configUrl.scss)
-    .pipe($.sourcemaps.init()) 
-    .pipe($.sass({outputStyle: 'compressed'}).on('error', $.sass.logError))
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('./dev/assets/css'))
-    //.pipe($.livereload());
+//制作精灵图
+gulp.task('sprites', function() {
+    var spriteData = gulp.src('./dev/assets/images/icons/normal/*.png')
+        .pipe($.spritesmith({
+            retinaSrcFilter: './dev/assets/images/icons/normal/*-2x.png',
+            retinaImgName: '../images/sprite-2x.png',
+            imgName: 'sprite.png',
+            imgPath: '../images/sprite.png',
+            cssName: '_icons-sprites.scss',
+            //cssFormat: 'scss',
+            //cssSpritesheetName :'icons-',
+            padding: 20,
+            algorithm: '', //图像排序算法：top-down,left-right,diagonal,alt-diagonal,binary-tree
+        }));
+
+    var imgStream = spriteData.img
+        .pipe(buffer())
+        .pipe(gulp.dest(configUrl.dist.images))
+
+    var cssStream = spriteData.css
+        .pipe(gulp.dest(configUrl.dist.sprites))
+
+    //生成多个精灵图
+    var spirteFile = gulp.src('./dev/assets/images/icons1/*.png')
+        .pipe($.spritesmith({
+            imgName: 'sprite-foods.png',
+            imgPath: '../images/sprite-foods.png',
+            cssName: '_foods-sprites.scss',
+            //cssFormat: 'scss',
+            cssSpritesheetName: 'foods', //变量名称
+            padding: 10,
+            algorithm: 'binary-tree', //top-down,left-right,diagonal,alt-diagonal,binary-tree
+        }));
+
+    var imgFood = spirteFile.img
+        .pipe(buffer())
+        .pipe(gulp.dest(configUrl.dist.images))
+
+    var cssFood = spirteFile.css
+        .pipe(gulp.dest(configUrl.dist.sprites))
+
+    return merge([imgStream, cssStream, imgFood, cssFood]);
+});
+
+//sass编译
+gulp.task('sass', function() {
+    return gulp.src(configUrl.assets.scss)
+        .pipe($.sourcemaps.init())
+        .pipe($.sass({ outputStyle: 'compressed' }).on('error', $.sass.logError))
+        .pipe($.sourcemaps.write('./'))
+        .pipe(gulp.dest(configUrl.dist.css))
+        //.pipe($.livereload());
 });
 
 
@@ -105,29 +99,28 @@ gulp.task('sass', function () {
 
 //压缩排序优化CSS
 gulp.task('minicss', function() {
-  return gulp.src(configUrl.css)
-    .pipe($.autoprefixer())
-    //.pipe($.csscomb())
-    .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(gulp.dest('dev/assets/css'));
+    return gulp.src(configUrl.assets.css)
+        .pipe($.autoprefixer())
+        .pipe($.csscomb())
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(gulp.dest(configUrl.dist.css));
 });
 
-//图片压缩
+//tinypng图片压缩
 gulp.task('tinypng', function() {
-  return gulp.src(configUrl.images)
-    //tinypng图片压缩
-    .pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
-    .pipe(gulp.dest('dev/assets/images'));
+    return gulp.src(configUrl.assets.images)
+        .pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
+        .pipe(gulp.dest(configUrl.dist.images));
 });
 
 
 
 // 监听
 gulp.task('watch', function() {
-  // gulp.watch([configUrl.scss, 'config.rb'], ['compass']);
-  //gulp.watch(configUrl.scss, ['sass']).on('change', $.livereload.changed);
-  gulp.watch(configUrl.scss, gulpSequence('sass','minicss')); 
-  //gulp.watch('./dist/css/*.css').on('change', $.livereload.changed);
+    //gulp.watch(configUrl.assets.scss, ['sass']).on('change', $.livereload.changed);
+    gulp.watch(configUrl.assets.scss, ['sass', 'minicss']);
+    //gulp.watch('./dist/css/*.css').on('change', $.livereload.changed);
 });
+
 // gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
-gulp.task('default', gulpSequence('sprites','sass','minicss','tinypng', 'watch'));
+gulp.task('default', gulpSequence('sprites', 'sass', 'minicss', 'tinypng', 'watch'));
