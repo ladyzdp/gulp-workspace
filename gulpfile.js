@@ -7,12 +7,13 @@ var gulp = require('gulp'),
     $ = gulpLoadPlugins();
 
 
-// $.livereload({
-//   start: true
-// })
+$.livereload({
+    start: true
+})
 
 //配置路径
 var baseUrl = './dev/assets/';
+var tinypngApi = 'm66cergQwJ-L96d3X1QhVs-mQs8WzrPm';
 var configUrl = {
     assets: {
         css: baseUrl + 'css/*.css',
@@ -90,7 +91,7 @@ gulp.task('sass', function() {
         .pipe($.sass({ outputStyle: 'compressed' }).on('error', $.sass.logError))
         .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest(configUrl.dist.css))
-        //.pipe($.livereload());
+        .pipe($.livereload());
 });
 
 
@@ -109,7 +110,7 @@ gulp.task('minicss', function() {
 //tinypng图片压缩
 gulp.task('tinypng', function() {
     return gulp.src(configUrl.assets.images)
-        .pipe($.tinypng('m66cergQwJ-L96d3X1QhVs-mQs8WzrPm'))
+        .pipe($.cache($.tinypng(tinypngApi)))
         .pipe(gulp.dest(configUrl.dist.images));
 });
 
@@ -119,7 +120,7 @@ gulp.task('tinypng', function() {
 gulp.task('watch', function() {
     //gulp.watch(configUrl.assets.scss, ['sass']).on('change', $.livereload.changed);
     gulp.watch(configUrl.assets.scss, ['sass', 'minicss']);
-    //gulp.watch('./dist/css/*.css').on('change', $.livereload.changed);
+    gulp.watch(['./dev/**/*.*', '*.html']).on('change', function() { $.livereload.changed });
 });
 
 // gulp.task('default', ['compass','minicss' ,'tinypng', 'watch']);
