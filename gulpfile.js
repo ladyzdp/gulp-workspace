@@ -65,10 +65,21 @@ gulp.task('sprites', function() {
     //生成多个精灵图
     var spirteFile = gulp.src('./dev/assets/images/icons1/*.png')
         .pipe($.spritesmith({
+            cssOpts: {
+                cssSelector: function(item) {
+                    // If this is a hover sprite, name it as a hover one (e.g. 'home-hover' -> 'home:hover')
+                    if (item.name.indexOf('-hover') !== -1) {
+                        return '.icons-' + item.name.replace('-hover', ':hover');
+                        // Otherwise, use the name as the selector (e.g. 'home' -> 'home')
+                    } else {
+                        return '.icons-' + item.name;
+                    }
+                }
+            },
             imgName: 'sprite-foods.png',
             imgPath: '../images/sprite-foods.png',
             cssName: '_foods-sprites.scss',
-            //cssFormat: 'scss',
+            cssFormat: 'css',
             cssSpritesheetName: 'foods', //变量名称
             padding: 10,
             algorithm: 'binary-tree', //top-down,left-right,diagonal,alt-diagonal,binary-tree
@@ -103,6 +114,7 @@ gulp.task('minicss', function() {
     return gulp.src(configUrl.assets.css)
         .pipe($.autoprefixer())
         .pipe($.csscomb())
+        .pipe($.csso())
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(gulp.dest(configUrl.dist.css));
 });

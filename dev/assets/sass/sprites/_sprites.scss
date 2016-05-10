@@ -35,7 +35,7 @@
 }
 
 
-@include foods-sprites($foods-sprites);
+//@include foods-sprites($foods-sprites);
 @include icons-sprites($spritesheet-sprites);
 @include icons-retina-sprites($retina-groups);
 // @include sprites($spritesheet-sprites);

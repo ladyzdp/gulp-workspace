@@ -1,109 +1,5 @@
 /*
-SCSS variables are information about icon's compiled state, stored under its original file name
-
-.icon-home {
-  width: $icon-home-width;
-}
-
-The large array-like variables contain all information about a single icon
-$icon-home: x y offset_x offset_y width height total_width total_height image_path;
-
-At the bottom of this section, we provide information about the spritesheet itself
-$spritesheet: width height image $spritesheet-sprites;
-*/
-$lemon-2-name: 'lemon-2';
-$lemon-2-x: 0px;
-$lemon-2-y: 0px;
-$lemon-2-offset-x: 0px;
-$lemon-2-offset-y: 0px;
-$lemon-2-width: 64px;
-$lemon-2-height: 64px;
-$lemon-2-total-width: 212px;
-$lemon-2-total-height: 212px;
-$lemon-2-image: '../images/sprite-foods.png';
-$lemon-2: (0px, 0px, 0px, 0px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'lemon-2', );
-$lemon-name: 'lemon';
-$lemon-x: 74px;
-$lemon-y: 0px;
-$lemon-offset-x: -74px;
-$lemon-offset-y: 0px;
-$lemon-width: 64px;
-$lemon-height: 64px;
-$lemon-total-width: 212px;
-$lemon-total-height: 212px;
-$lemon-image: '../images/sprite-foods.png';
-$lemon: (74px, 0px, -74px, 0px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'lemon', );
-$lollipop-name: 'lollipop';
-$lollipop-x: 0px;
-$lollipop-y: 74px;
-$lollipop-offset-x: 0px;
-$lollipop-offset-y: -74px;
-$lollipop-width: 64px;
-$lollipop-height: 64px;
-$lollipop-total-width: 212px;
-$lollipop-total-height: 212px;
-$lollipop-image: '../images/sprite-foods.png';
-$lollipop: (0px, 74px, 0px, -74px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'lollipop', );
-$pomegranete-name: 'pomegranete';
-$pomegranete-x: 74px;
-$pomegranete-y: 74px;
-$pomegranete-offset-x: -74px;
-$pomegranete-offset-y: -74px;
-$pomegranete-width: 64px;
-$pomegranete-height: 64px;
-$pomegranete-total-width: 212px;
-$pomegranete-total-height: 212px;
-$pomegranete-image: '../images/sprite-foods.png';
-$pomegranete: (74px, 74px, -74px, -74px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'pomegranete', );
-$popcorn-name: 'popcorn';
-$popcorn-x: 148px;
-$popcorn-y: 0px;
-$popcorn-offset-x: -148px;
-$popcorn-offset-y: 0px;
-$popcorn-width: 64px;
-$popcorn-height: 64px;
-$popcorn-total-width: 212px;
-$popcorn-total-height: 212px;
-$popcorn-image: '../images/sprite-foods.png';
-$popcorn: (148px, 0px, -148px, 0px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'popcorn', );
-$pumpkin-name: 'pumpkin';
-$pumpkin-x: 148px;
-$pumpkin-y: 74px;
-$pumpkin-offset-x: -148px;
-$pumpkin-offset-y: -74px;
-$pumpkin-width: 64px;
-$pumpkin-height: 64px;
-$pumpkin-total-width: 212px;
-$pumpkin-total-height: 212px;
-$pumpkin-image: '../images/sprite-foods.png';
-$pumpkin: (148px, 74px, -148px, -74px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'pumpkin', );
-$watermelon-name: 'watermelon';
-$watermelon-x: 0px;
-$watermelon-y: 148px;
-$watermelon-offset-x: 0px;
-$watermelon-offset-y: -148px;
-$watermelon-width: 64px;
-$watermelon-height: 64px;
-$watermelon-total-width: 212px;
-$watermelon-total-height: 212px;
-$watermelon-image: '../images/sprite-foods.png';
-$watermelon: (0px, 148px, 0px, -148px, 64px, 64px, 212px, 212px, '../images/sprite-foods.png', 'watermelon', );
-$foods-width: 212px;
-$foods-height: 212px;
-$foods-image: '../images/sprite-foods.png';
-$foods-sprites: ($lemon-2, $lemon, $lollipop, $pomegranete, $popcorn, $pumpkin, $watermelon, );
-$foods: (212px, 212px, '../images/sprite-foods.png', $foods-sprites, );
-
-/*
-The provided mixins are intended to be used with the array-like variables
-
-.icon-home {
-  @include sprite-width($icon-home);
-}
-
-.icon-email {
-  @include sprite($icon-email);
-}
+Icon classes can be used entirely standalone. They are named after their original file names.
 
 Example usage in HTML:
 
@@ -120,43 +16,51 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 // HTML
 <i class="icon icon-home"></i>
 */
-@mixin sprite-width($sprite) {
-  width: nth($sprite, 5);
+.icons-lemon-2 {
+  background-image: url(../images/sprite-foods.png);
+  background-position: 0px 0px;
+  width: 64px;
+  height: 64px;
 }
-
-@mixin sprite-height($sprite) {
-  height: nth($sprite, 6);
+.icons-lemon:hover {
+  background-image: url(../images/sprite-foods.png);
+  background-position: -74px 0px;
+  width: 64px;
+  height: 64px;
 }
-
-@mixin sprite-position($sprite) {
-  $sprite-offset-x: nth($sprite, 3);
-  $sprite-offset-y: nth($sprite, 4);
-  background-position: $sprite-offset-x  $sprite-offset-y;
+.icons-lemon {
+  background-image: url(../images/sprite-foods.png);
+  background-position: 0px -74px;
+  width: 64px;
+  height: 64px;
 }
-
-@mixin sprite-image($sprite) {
-  $sprite-image: nth($sprite, 9);
-  background-image: url(#{$sprite-image});
+.icons-lollipop {
+  background-image: url(../images/sprite-foods.png);
+  background-position: -74px -74px;
+  width: 64px;
+  height: 64px;
 }
-
-@mixin sprite($sprite) {
-  @include sprite-image($sprite);
-  @include sprite-position($sprite);
-  @include sprite-width($sprite);
-  @include sprite-height($sprite);
+.icons-pomegranete {
+  background-image: url(../images/sprite-foods.png);
+  background-position: -148px 0px;
+  width: 64px;
+  height: 64px;
 }
-
-/*
-The `sprites` mixin generates identical output to the CSS template
-  but can be overridden inside of SCSS
-
-@include sprites($spritesheet-sprites);
-*/
-@mixin sprites($sprites) {
-  @each $sprite in $sprites {
-    $sprite-name: nth($sprite, 10);
-    .#{$sprite-name} {
-      @include sprite($sprite);
-    }
-  }
+.icons-popcorn {
+  background-image: url(../images/sprite-foods.png);
+  background-position: -148px -74px;
+  width: 64px;
+  height: 64px;
+}
+.icons-pumpkin {
+  background-image: url(../images/sprite-foods.png);
+  background-position: 0px -148px;
+  width: 64px;
+  height: 64px;
+}
+.icons-watermelon {
+  background-image: url(../images/sprite-foods.png);
+  background-position: -74px -148px;
+  width: 64px;
+  height: 64px;
 }
