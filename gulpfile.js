@@ -28,7 +28,7 @@ var configUrl = {
         htmlfile: baseUrl + 'html/*.html',
     },
     folder: {
-        css: distUrl + 'assets/css',
+        css: baseUrl + 'assets/css',
         images: baseUrl + 'assets/images',
         scss: baseUrl + 'assets/sass',
         sprites: baseUrl + 'assets/sass/sprites',
@@ -113,23 +113,22 @@ gulp.task('sprites', function() {
 //sass编译
 gulp.task('sass', function() {
     return gulp.src(configUrl.file.scss)
-        .pipe($.sourcemaps.init())
-        .pipe($.sass({ outputStyle: 'compressed' }).on('error', $.sass.logError))
+        .pipe($.sourcemaps.init({loadMaps: true}))
+        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.autoprefixer())
         .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest(configUrl.folder.css))
         .pipe($.livereload());
 });
 
-
 //压缩排序优化CSS
 gulp.task('minicss', function() {
     return gulp.src(configUrl.file.css)
-        .pipe($.autoprefixer())
+        //.pipe($.autoprefixer())
         .pipe($.csscomb())
         .pipe($.csso())
         .pipe(cleanCSS({ compatibility: 'ie8' }))
-        .pipe(gulp.dest(configUrl.dist.css))
-        .pipe($.livereload());
+        .pipe(gulp.dest(configUrl.file.css));
 });
 
 //加MD5
@@ -148,14 +147,14 @@ gulp.task('minifyjs', function() {
         //.pipe(gulp.dest('js'))       //输出到文件夹
         //.pipe($.rename({suffix: '.min'}))   //rename压缩后的文件名
         .pipe($.uglify()) //压缩
-        .pipe(gulp.dest(configUrl.dist.js)); //输出
+        .pipe(gulp.dest(configUrl.folder.js)); //输出
 });
 
 //tinypng图片压缩
 gulp.task('tinypng', function() {
     return gulp.src(configUrl.file.images)
         .pipe($.cache($.tinypng(tinypngApi)))
-        .pipe(gulp.dest(configUrl.dist.images))
+        .pipe(gulp.dest(configUrl.folder.images))
         .pipe($.livereload());
 });
 
@@ -173,7 +172,7 @@ gulp.task('fileinclude', function() {
 gulp.task('htmlmin', function() {
     return gulp.src(configUrl.file.htmlfile)
         .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest(configUrl.dist.html))
+        .pipe(gulp.dest(configUrl.file.html))
         .pipe($.livereload());
 });
 
@@ -182,17 +181,16 @@ gulp.task('htmlmin', function() {
 gulp.task('watch', function() {
     //gulp.watch(configUrl.file.scss, ['sass']).on('change', $.livereload.changed);
     $.livereload.listen();
-    gulp.watch(configUrl.file.scss, ['sass', 'minicss']);
+    gulp.watch(configUrl.file.scss, ['sass']);
     gulp.watch(configUrl.file.html, ['fileinclude']);
-    gulp.watch('./dev/html/*.html', ['htmlmin']);
+    //gulp.watch('./dev/html/*.html', ['htmlmin']);
 
     gulp.watch(['./dev/**/*.{html,js,css,scss,jpg,png}', '*.html', './app/**/*.{html,js,css,scss,jpg,png}']).on('change', function() {
-        $.livereload.changed
         $.livereload.changed
     });
 });
 
 // 发布
-gulp.task('default', gulpSequence('clean', 'sprites', 'sass', 'minicss', 'tinypng', 'fileinclude', 'htmlmin', 'md5:css', 'watch'));
+gulp.task('default', gulpSequence('sprites', 'sass',  'tinypng', 'fileinclude','watch'));
 //开发
-gulp.task('dev', gulpSequence('clean', 'sprites', 'sass', 'minicss', 'minifyjs', 'tinypng', 'fileinclude', 'htmlmin', 'watch'));
+gulp.task('dev', gulpSequence('clean', 'sprites', 'sass', 'minicss', 'minifyjs', 'tinypng', 'fileinclude', 'htmlmin','md5:css', 'watch'));
