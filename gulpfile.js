@@ -191,6 +191,6 @@ gulp.task('watch', function() {
 });
 
 // 发布
-gulp.task('default', gulpSequence('sprites', 'sass',  'tinypng', 'fileinclude','watch'));
+gulp.task('default', gulpSequence('clean', 'sass',  'tinypng', 'fileinclude','watch'));
 //开发
 gulp.task('dev', gulpSequence('clean', 'sprites', 'sass', 'minicss', 'minifyjs', 'tinypng', 'fileinclude', 'htmlmin','md5:css', 'watch'));

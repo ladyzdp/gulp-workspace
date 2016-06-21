@@ -24,3 +24,43 @@
 		padding-right: 15px;
 	}
 }
+@mixin font-dpr($font-size){
+    font-size: $font-size;
+
+    [data-dpr="2"] & {
+        font-size: $font-size * 2;
+    }
+
+    [data-dpr="3"] & {
+        font-size: $font-size * 3;
+    }
+}
+
+.fz14{
+    @include font-dpr(14px);
+  
+}
+.fz12{
+    @include font-dpr(12px);
+}
+
+.fz16{
+    @include font-dpr(16px);
+}
+
+.fz18{
+    @include font-dpr(18px);
+}
+.fz20{
+    @include font-dpr(20px);
+}
+.fz22{
+    @include font-dpr(22px);
+}
+
+.fz24{
+    @include font-dpr(24px);
+}
+body{
+    @extend .fz12;
+}
