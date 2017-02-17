@@ -207,7 +207,12 @@ input::-moz-focus-inner {
 }
 
 input {
+<<<<<<< HEAD
     line-height: normal;
+=======
+  line-height: normal;
+      -webkit-appearance: none;
+>>>>>>> 8b5b6689cdac9d1c778e4b7b679c424c08b07d61
 }
 
 input[type="checkbox"],
@@ -268,5 +273,13 @@ ul {
 }
 
 img {
+<<<<<<< HEAD
     border: 0;
 }
+=======
+  border: 0;
+}
+
+/* 去掉点击时背景颜色 */
+a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+>>>>>>> 8b5b6689cdac9d1c778e4b7b679c424c08b07d61

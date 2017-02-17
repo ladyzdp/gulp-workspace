@@ -169,7 +169,8 @@ input::-moz-focus-inner {
   padding: 0; }
 
 input {
-  line-height: normal; }
+  line-height: normal;
+  -webkit-appearance: none; }
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -220,6 +221,10 @@ ul {
 img {
   border: 0; }
 
+/* 去掉点击时背景颜色 */
+a, button, input {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0); }
+
 /* 文本溢出隐藏 */
 .text-overflow {
   white-space: nowrap;
@@ -248,6 +253,55 @@ img {
     bottom: 0;
     right: 0;
     padding-right: 15px; }
+
+.fz14 {
+  font-size: 14px; }
+  [data-dpr="2"] .fz14 {
+    font-size: 28px; }
+  [data-dpr="3"] .fz14 {
+    font-size: 42px; }
+
+.fz12, body {
+  font-size: 12px; }
+  [data-dpr="2"] .fz12, [data-dpr="2"] body {
+    font-size: 24px; }
+  [data-dpr="3"] .fz12, [data-dpr="3"] body {
+    font-size: 36px; }
+
+.fz16 {
+  font-size: 16px; }
+  [data-dpr="2"] .fz16 {
+    font-size: 32px; }
+  [data-dpr="3"] .fz16 {
+    font-size: 48px; }
+
+.fz18 {
+  font-size: 18px; }
+  [data-dpr="2"] .fz18 {
+    font-size: 36px; }
+  [data-dpr="3"] .fz18 {
+    font-size: 54px; }
+
+.fz20 {
+  font-size: 20px; }
+  [data-dpr="2"] .fz20 {
+    font-size: 40px; }
+  [data-dpr="3"] .fz20 {
+    font-size: 60px; }
+
+.fz22 {
+  font-size: 22px; }
+  [data-dpr="2"] .fz22 {
+    font-size: 44px; }
+  [data-dpr="3"] .fz22 {
+    font-size: 66px; }
+
+.fz24 {
+  font-size: 24px; }
+  [data-dpr="2"] .fz24 {
+    font-size: 48px; }
+  [data-dpr="3"] .fz24 {
+    font-size: 72px; }
 
 /* functions */
 .fn-lt {
