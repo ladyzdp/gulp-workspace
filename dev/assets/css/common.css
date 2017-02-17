@@ -2,7 +2,16 @@
 html {
   font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+img {
+  box-sizing: content-box; }
 
 body,
 dl,
@@ -216,6 +225,7 @@ img {
   white-space: nowrap;
   overflow: hidden;
   -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis; }
 
 /* 清除浮动 */
@@ -312,74 +322,6 @@ h6 {
 .pd10 {
   padding: 10px; }
 
-/*
-SCSS variables are information about icon's compiled state, stored under its original file name
-
-.icon-home {
-  width: $icon-home-width;
-}
-
-The large array-like variables contain all information about a single icon
-$icon-home: x y offset_x offset_y width height total_width total_height image_path;
-
-At the bottom of this section, we provide information about the spritesheet itself
-$spritesheet: width height image $spritesheet-sprites;
-*/
-/*
-These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
-
-The list formatted variables are intended for mixins like `retina-sprite` and `retina-sprites`.
-*/
-/*
-The provided mixins are intended to be used with the array-like variables
-
-.icon-home {
-  @include sprite-width($icon-home);
-}
-
-.icon-email {
-  @include sprite($icon-email);
-}
-
-Example usage in HTML:
-
-`display: block` sprite:
-<div class="icon-home"></div>
-
-To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
-
-// CSS
-.icon {
-  display: inline-block;
-}
-
-// HTML
-<i class="icon icon-home"></i>
-*/
-/*
-The `retina-sprite` mixin sets up rules and a media query for a sprite/retina sprite.
-  It should be used with a "retina group" variable.
-
-The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
-
-$icon-home-group: ('icon-home', $icon-home, $icon-home-2x, );
-
-.icon-home {
-  @include retina-sprite($icon-home-group);
-}
-*/
-/*
-The `sprites` mixin generates identical output to the CSS template
-  but can be overridden inside of SCSS
-
-@include sprites($spritesheet-sprites);
-*/
-/*
-The `retina-sprites` mixin generates a CSS rule and media query for retina groups
-  This yields the same output as CSS retina template but can be overridden in SCSS
-
-@include retina-sprites($retina-groups);
-*/
 /*
 Icon classes can be used entirely standalone. They are named after their original file names.
 
@@ -534,7 +476,6 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  -webkit-transition: background-color .2s ease, border-color .1s ease;
   transition: background-color .2s ease, border-color .1s ease; }
   .btn:focus {
     outline: none; }
@@ -742,15 +683,13 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     top: 50%;
     left: calc(50% - 6px);
     -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-        transform: rotate(45deg); }
+    transform: rotate(45deg); }
   :checked + .ui-checkbox-label:after, :disabled + .ui-checkbox-label:after {
     width: 10px;
     top: calc(50% - 1px);
     left: calc(50% - 3px);
     -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-        transform: rotate(-45deg); }
+    transform: rotate(-45deg); }
 
 .ui-checkbox {
   position: absolute;
@@ -763,12 +702,10 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   width: 20px;
   height: 20px;
   border-radius: 4px;
-  box-sizing: border-box;
   background-color: #fff;
   color: #d0d0d5;
   vertical-align: -.4em;
   background-clip: content-box;
-  -webkit-transition: color .2s, background-color .1s;
   transition: color .2s, background-color .1s;
   overflow: hidden; }
   .ui-checkbox-label:hover {
@@ -785,8 +722,6 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   border: 1px solid #d0d0d5;
   border-radius: 100%;
   background-color: #fff;
-  box-sizing: border-box;
-  -webkit-transition: border-color .2s;
   transition: border-color .2s;
   overflow: hidden;
   vertical-align: -.3em; }
@@ -812,10 +747,8 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   color: #d0d0d5;
   border-radius: 26px;
   background-color: currentColor;
-  box-sizing: border-box;
   cursor: pointer;
   vertical-align: -.3em;
-  -webkit-transition: all .2s;
   transition: all .2s; }
   .ui-switch-label:before {
     content: '';
@@ -824,7 +757,6 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     height: 22px;
     border-radius: 22px;
     background-color: #fff;
-    -webkit-transition: margin-left .2s;
     transition: margin-left .2s; }
 
 .ui-file {
@@ -963,29 +895,17 @@ body {
 .main {
   width: 100%;
   height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  box-sizing: border-box; }
+  display: flex; }
 
 .left-bar {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   height: 100vh;
   background-color: #f5f5f5;
-  box-sizing: border-box;
   padding: 20px; }
 
 .right-content {
-  box-sizing: border-box;
   padding: 20px;
-  -webkit-box-flex: 5;
-  -webkit-flex: 5;
-      -ms-flex: 5;
-          flex: 5; }
+  flex: 5; }
   .right-content div {
     margin: 10px 0; }
 
