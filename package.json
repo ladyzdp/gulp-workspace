@@ -1,48 +1,5 @@
 {
-<<<<<<< HEAD
-    "name": "gulp-workspace",
-    "version": "1.0.0",
-    "description": "gulp-workspace",
-    "main": "gulpfile.js",
-    "dependencies": {
-        "node-sass": "^3.8.0"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^3.1.0",
-        "gulp-cache": "^0.4.4",
-        "gulp-clean": "^0.3.1",
-        "gulp-clean-css": "^2.0.5",
-        "gulp-csscomb": "^3.0.6",
-        "gulp-csso": "^2.0.0",
-        "gulp-file-include": "^0.13.7",
-        "gulp-livereload": "^3.8.1",
-        "gulp-load-plugins": "^1.2.4",
-        "gulp-plumber": "^1.0.1",
-        "gulp-postcss": "^6.0.1",
-        "gulp-sass": "^2.3.2",
-        "gulp-sequence": "^0.4.5",
-        "gulp-sourcemaps": "^2.0.0-alpha",
-        "gulp-tinypng": "^1.0.2",
-        "gulp-webserver": "^0.9.1",
-        "gulp.spritesmith": "^6.2.1",
-        "merge-stream": "^1.0.0",
-        "vinyl-buffer": "^1.0.0"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "keywords": [
-        "gulp-workspace"
-    ],
-    "author": "gulp-workspace",
-    "license": "ISC",
-    "homepage": ""
-=======
+
   "name": "gulp-workspace",
   "version": "1.0.0",
   "description": "gulp-workspace",
@@ -86,5 +43,5 @@
   "author": "gulp-workspace",
   "license": "ISC",
   "homepage": ""
->>>>>>> dev
+
 }
