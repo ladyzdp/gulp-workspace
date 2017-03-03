@@ -1,16 +1,17 @@
 var url = require('url');
 var fs = require('fs');
 var path = require('path');
-var gulp = require('gulp'),
-    gulpLoadPlugins = require('gulp-load-plugins'),
-    buffer = require('vinyl-buffer'),
-    merge = require('merge-stream'),
-    gulpSequence = require('gulp-sequence'),
-    cleanCSS = require('gulp-clean-css'),
-    livereload = require('gulp-livereload'),
-    webserver = require('gulp-webserver'),
-    fileinclude = require('gulp-file-include'),
-    $ = gulpLoadPlugins();
+var gulp = require('gulp');
+var gulpLoadPlugins = require('gulp-load-plugins');
+var buffer = require('vinyl-buffer');
+var merge = require('merge-stream');
+var gulpSequence = require('gulp-sequence');
+var cleanCSS = require('gulp-clean-css');
+var uncss = require('gulp-uncss');
+var livereload = require('gulp-livereload');
+var webserver = require('gulp-webserver');
+var fileinclude = require('gulp-file-include');
+var $ = gulpLoadPlugins();
 
 
 livereload({ start: true, auto: false });
@@ -115,23 +116,20 @@ gulp.task('sprites', function() {
 //sass编译
 gulp.task('sass', function() {
     return gulp.src(configUrl.file.scss)
-        .pipe($.sourcemaps.init({ loadMaps: true }))
-        .pipe($.sass().on('error', $.sass.logError))
-        // .pipe($.autoprefixer())
+.pipe($.sourcemaps.init({ loadMaps: true }))
+    .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.autoprefixer()) //添加前缀
+        .pipe($.csso()) //css清理
+        .pipe(cleanCSS({ compatibility: 'ie8' })) //css清理
+        .pipe(uncss({
+            html: [configUrl.file.htmlfile] //css清理
+        }))
+        
         .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest(configUrl.folder.css))
         .pipe(livereload());
 });
 
-//压缩排序优化CSS
-gulp.task('minicss', function() {
-    return gulp.src(configUrl.file.css)
-        .pipe($.autoprefixer())
-        .pipe($.csscomb())
-        .pipe($.csso())
-        .pipe(cleanCSS({ compatibility: 'ie8' }))
-        .pipe(gulp.dest(configUrl.folder.css));
-});
 
 
 
@@ -152,7 +150,7 @@ gulp.task('fileinclude', function() {
             basepath: '@file'
         }))
         .pipe(gulp.dest(configUrl.folder.html))
-        .pipe(livereload());
+      
 });
 
 // webserver
@@ -206,10 +204,8 @@ gulp.task('watch', function() {
 });
 
 // 发布
-<<<<<<< HEAD
-gulp.task('default', gulpSequence('clean', 'fileinclude', 'sass', 'minicss', 'webserver', 'watch'));
-=======
-gulp.task('default', gulpSequence('clean', 'sass',  'tinypng', 'fileinclude','watch'));
->>>>>>> 8b5b6689cdac9d1c778e4b7b679c424c08b07d61
+
+gulp.task('default', gulpSequence('clean', 'fileinclude', 'sass', 'webserver', 'watch'));
+
 //开发
-gulp.task('dev', gulpSequence('clean', 'sprites', 'sass', 'minicss', 'minifyjs', 'tinypng', 'fileinclude', 'htmlmin', 'md5:css', 'watch'));
+gulp.task('dev', gulpSequence('clean', 'sprites', 'sass', 'minifyjs', 'tinypng', 'fileinclude', 'htmlmin', 'md5:css', 'watch'));
