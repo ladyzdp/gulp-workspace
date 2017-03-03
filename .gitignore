@@ -3,5 +3,10 @@
 /WEB-INF/
 /npm-debug.log/
 /release/
+<<<<<<< HEAD
 .sublime-gulp.cache
 debug.log
+=======
+/.vscode/
+.sublime-gulp.cache
+>>>>>>> dev
